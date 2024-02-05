@@ -26,14 +26,17 @@
   <div id="menubar">
 
     <nav>
-      <h2>Contents</h2>
+      <h2>【お問い合わせ】<br>0187-86-7001</h2>
+<!--      <h2>Contents</h2>-->
       <ul class="submenu">
-        <li><a href="index.html">ホーム</a></li>
-        <li><a href="greeting.html">ご挨拶</a></li>
-        <li><a href="room.html">お部屋のご紹介</a></li>
-        <li><a href="dining.html">お料理について</a></li>
-        <li><a href="service.html">施設・サービスのご案内</a></li>
-        <li><a href="contact.html">ご予約・お問合せ</a></li>
+        <li><a href="greeting.html">お知らせ</a></li>
+        <li><a href="room.html">イベント</a></li>
+        <li><a href="dining.html">空室情報</a></li>
+        <li><a href="service.html">客室・料金</a></li>
+        <li><a href="contact.html">サービス内容</a></li>
+        <li><a href="contact.html">メニュー</a></li>
+        <li><a href="contact.html">メンバー特典</a></li>
+        <li><a href="contact.html">アクセス</a></li>
       </ul>
     </nav>
 

@@ -5,11 +5,14 @@
 
     <nav>
       <ul>
-        <li><a href="greeting.html">ご挨拶</a></li>
-        <li><a href="room.html">お部屋のご紹介</a></li>
-        <li><a href="dining.html">お料理について</a></li>
-        <li><a href="service.html">施設・サービスのご案内</a></li>
-        <li><a href="contact.html">ご予約・お問合せ</a></li>
+        <li><a href="greeting.html">お知らせ</a></li>
+        <li><a href="room.html">イベント</a></li>
+        <li><a href="dining.html">空室情報</a></li>
+        <li><a href="service.html">客室・料金</a></li>
+        <li><a href="contact.html">サービス内容</a></li>
+        <li><a href="contact.html">メニュー</a></li>
+        <li><a href="contact.html">メンバー特典</a></li>
+        <li><a href="contact.html">アクセス</a></li>
       </ul>
     </nav>
 
@@ -20,9 +23,9 @@
 
   </header>
 
-<!--  <ul class="lang-menu">-->
-<!--    <li><a href="index_en.html">English</a></li>-->
-<!--  </ul>-->
+  <!--  <ul class="lang-menu">-->
+  <!--    <li><a href="index_en.html">English</a></li>-->
+  <!--  </ul>-->
 
   <main>
 
@@ -44,10 +47,6 @@
           <dd>サンプルテキスト。サンプルテキスト。サンプルテキスト。</dd>
           <dt>2023.00.00</dt>
           <dd>サンプルテキスト。サンプルテキスト。サンプルテキスト。</dd>
-          <dt>2023.00.00</dt>
-          <dd>
-            サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。
-          </dd>
         </dl>
 
         <div class="r">
@@ -61,46 +60,78 @@
 
     </section>
 
+    <!--    <section class="blurstyle">-->
+
+    <!--      <h2 class="dn">フォトギャラリー</h2>-->
+
+    <!--      <div class="list-slide">-->
+
+    <!--        <v-carousel-->
+    <!--          cycle-->
+    <!--          height="400"-->
+    <!--          hide-delimiter-background-->
+    <!--          show-arrows="hover"-->
+    <!--        >-->
+    <!--          <v-carousel-item-->
+    <!--            v-for="(item,i) in slide_items"-->
+    <!--            :key="i"-->
+    <!--            :src="item.src"-->
+    <!--          ></v-carousel-item>-->
+    <!--        </v-carousel>-->
+
+    <!--      </div>-->
+    <!--      &lt;!&ndash;/.list-slide&ndash;&gt;-->
+
+    <!--    </section>-->
+
     <section class="blurstyle">
 
-      <h2 class="dn">フォトギャラリー</h2>
-
-      <div class="list-slide">
+      <div class="title-bg">
+        <h2>
+          <div class="tate">イベント</div>
+          <div class="yoko">Event</div>
+        </h2>
+      </div>
+      <div class="list-slide mb-3">
 
         <v-carousel
-          cycle
-          height="400"
+
+          height="auto"
           hide-delimiter-background
           show-arrows="hover"
         >
+          <!--          この画像は今後djangoのAPIのURLのパスに変更とクリックしたらそのページに移動-->
           <v-carousel-item
             v-for="(item,i) in slide_items"
             :key="i"
-            :src="item.src"
+            :src="`src/images/${item.src}`"
+            @click="console.log(item.src)"
+            max-height="700"
           ></v-carousel-item>
         </v-carousel>
 
+
       </div>
-      <!--/.list-slide-->
+
+      <div class="r">
+          <p class="animation-btn">
+            <a href="#" class="animation-btn-inner">もっとみる<i class="bi bi-arrow-right"></i></a>
+          </p>
+        </div>
 
     </section>
 
+
     <section class="blurstyle">
 
-      <h2>テンプレートのご利用前に必ずお読み下さい<span>Read me</span></h2>
+      <h2>アクセス<span>Access</span></h2>
 
-      <h3 class="c">利用規約のご案内</h3>
-      <p>このテンプレートは、<a href="https://template-party.com/">Template Party</a>にて無料配布している『旅館・料亭向け
-        無料ホームページテンプレート tp_yado6』です。必ずダウンロード先のサイトの<a
-          href="https://template-party.com/read.html">利用規約</a>をご一読の上でご利用下さい。</p>
-      <p><strong class="color-check">HP最下部の著作表示『Web
-        Design:Template-Party』は無断で削除しないで下さい。</strong><br>
-        わざと見えなく加工する事も禁止です。</p>
-      <p><strong class="color-check">下部の著作を外したい場合は</strong><br>
-        <a href="https://template-party.com/">Template-Party</a>の<a href="https://template-party.com/member.html">ライセンス契約</a>を行う事でHP下部の著作を外す事ができます。
-      </p>
+      <!--      <h3 class="c">利用規約のご案内</h3>-->
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12328.409729188774!2d140.5305002!3d39.4218081!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8f0a24c8ae4ad9%3A0x84d3635426970a49!2z44Gh44KH44Gj44Go576O6YO3!5e0!3m2!1sja!2sjp!4v1707113442549!5m2!1sja!2sjp"
+        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-      <h3 class="c">当テンプレートの詳しい使い方は</h3>
       <div class="c">
         <p class="animation-btn">
           <a href="about.html" class="animation-btn-inner">こちらをご覧下さい</a>
@@ -132,16 +163,13 @@ export default {
     ],
     slide_items: [
       {
-        src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg'
+        src: 'christmas.jpg'
       },
       {
-        src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg'
+        src: 'joy_sound.jpg'
       },
       {
-        src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg'
-      },
-      {
-        src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg'
+        src: 'new_year.jpg'
       }
     ]
   }),
