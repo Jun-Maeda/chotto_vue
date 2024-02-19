@@ -51,7 +51,7 @@
 
         <div class="r">
           <p class="animation-btn">
-            <a href="#" class="animation-btn-inner">もっとみる<i class="bi bi-arrow-right"></i></a>
+            <a @click="router().push('info_list')" class="animation-btn-inner">もっとみる<i class="bi bi-arrow-right"></i></a>
           </p>
         </div>
 
@@ -60,29 +60,6 @@
 
     </section>
 
-    <!--    <section class="blurstyle">-->
-
-    <!--      <h2 class="dn">フォトギャラリー</h2>-->
-
-    <!--      <div class="list-slide">-->
-
-    <!--        <v-carousel-->
-    <!--          cycle-->
-    <!--          height="400"-->
-    <!--          hide-delimiter-background-->
-    <!--          show-arrows="hover"-->
-    <!--        >-->
-    <!--          <v-carousel-item-->
-    <!--            v-for="(item,i) in slide_items"-->
-    <!--            :key="i"-->
-    <!--            :src="item.src"-->
-    <!--          ></v-carousel-item>-->
-    <!--        </v-carousel>-->
-
-    <!--      </div>-->
-    <!--      &lt;!&ndash;/.list-slide&ndash;&gt;-->
-
-    <!--    </section>-->
 
     <section class="blurstyle">
 
@@ -115,7 +92,7 @@
 
       <div class="r">
         <p class="animation-btn">
-          <a href="#" class="animation-btn-inner">もっとみる<i class="bi bi-arrow-right"></i></a>
+          <a @click="router().push('event_list')" class="animation-btn-inner">もっとみる<i class="bi bi-arrow-right"></i></a>
         </p>
       </div>
 

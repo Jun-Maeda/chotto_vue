@@ -16,6 +16,72 @@
 
   <section>
 
+    <h2 class="ma-3">全室完備</h2>
+    <small class="ma-3">全室標準でブロアーバスを完備。スキンケアやヘアケアにはDHCを使用しております。</small>
+    <v-row>
+      <v-col cols="12" sm="6" order-sm="1" class="mt-sm-10">
+        <v-carousel
+          cycle
+          height="auto"
+          hide-delimiter-background
+          show-arrows="hover"
+        >
+          <v-carousel-item
+            v-for="(item,i) in default_slide_items"
+            :key="i"
+            :src="`src/images/${item.src}`"
+          ></v-carousel-item>
+        </v-carousel>
+      </v-col>
+
+      <v-col cols="12" sm="6" order-sm="-1" class="mt-sm-10">
+        <v-list lines="one" :items="default_service" bg-color="rgba(255,255,255,0.3)" base-color="white"
+        />
+      </v-col>
+
+    </v-row>
+
+
+  </section>
+
+  <section>
+
+    <v-row style="margin:0" class="ma-3">
+      <h2 class="ml-sm-auto">VIPルーム限定</h2>
+    </v-row>
+    <v-row style="margin:0" class="ma-3">
+      <small
+        class="ml-sm-auto">全室共通に加えてよりワンランク上のサービスを提供。贅沢なお時間をお過ごしいただけます。</small>
+    </v-row>
+
+    <v-row>
+      <v-col cols="12" sm="6" class="mt-sm-10">
+        <v-carousel
+          cycle
+          height="auto"
+          hide-delimiter-background
+          show-arrows="hover"
+        >
+          <v-carousel-item
+            v-for="(item,i) in vip_slide_items"
+            :key="i"
+            :src="`src/images/${item.src}`"
+          ></v-carousel-item>
+        </v-carousel>
+      </v-col>
+
+      <v-col cols="12" sm="6" class="mt-sm-10">
+        <v-list lines="one" :items="vip_service" bg-color="rgba(255,255,255,0.3)" base-color="white"
+        />
+      </v-col>
+
+    </v-row>
+
+
+  </section>
+
+  <section>
+
 
     <div class="list">
       <figure><img src="@/images/sample_service1.jpg" alt=""></figure>
@@ -99,18 +165,75 @@ export default {
       { title: 'タイトル', align: 'start', width: '50%', key: 'title' },
       { title: '更新', align: 'end', width: '50%', key: 'update_date' }
     ],
-    infos: [
+    default_service: [
       {
-        update_date: '2023/12/25 12:17',
-        title: 'お盆の料金について'
+        title: 'VOD'
       },
       {
-        update_date: '2023/12/26 12:17',
-        title: 'お盆の料金について'
+        title: 'ブルーレイ'
       },
       {
-        update_date: '2023/12/24 12:17',
-        title: 'お盆の料金について'
+        title: 'ブロアーバス'
+      },
+      {
+        title: '浴室TV'
+      },
+      {
+        title: '水中照明'
+      },
+      {
+        title: 'ドライヤー'
+      },
+      {
+        title: 'ファブリックスプレー'
+      },
+      {
+        title: 'スキンケア'
+      },
+      {
+        title: 'シャンプー・コンディショナー'
+      }
+    ],
+    default_slide_items: [
+      {
+        id: 1,
+        src: 'sample_service1.jpg'
+      },
+      {
+        id: 2,
+        src: 'sample_service1.jpg'
+      },
+      {
+        id: 3,
+        src: 'sample_service1.jpg'
+      }
+    ],
+    vip_service: [
+      {
+        title: '高級サロン仕様シャンプー'
+      },
+      {
+        title: '大風量ドライヤー'
+      },
+      {
+        title: 'ウォーターサーバー'
+      },
+      {
+        title: '加湿機能付き空気清浄機'
+      }
+    ],
+    vip_slide_items: [
+      {
+        id: 1,
+        src: 'sample_service1.jpg'
+      },
+      {
+        id: 2,
+        src: 'sample_service1.jpg'
+      },
+      {
+        id: 3,
+        src: 'sample_service1.jpg'
       }
     ]
   }),

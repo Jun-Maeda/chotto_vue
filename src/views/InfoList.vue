@@ -59,6 +59,14 @@ export default {
       }
     ]
   }),
+  // created() {
+  //   this.axios.get(url).then((res) => {
+  //     this.unit_details = res.data;
+  //   }).catch((err) => {
+  //     alert('このデータはありません')
+  //     console.log(err)
+  //   })
+  // },
   methods: {
     clickItem(item, row) {
       this.info_store.info_data = row.item
