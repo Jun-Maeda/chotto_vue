@@ -5,11 +5,11 @@
 
     <nav>
       <ul>
-        <li><a href="greeting.html">お知らせ</a></li>
-        <li><a href="room.html">イベント</a></li>
-        <li><a href="dining.html">空室情報</a></li>
+        <li><a @click="router().push('info_list')">お知らせ</a></li>
+        <li><a @click="router().push('event_list')">イベント</a></li>
+        <li><a @click="router().push('entory_room')">空室情報</a></li>
         <li><a href="service.html">客室・料金</a></li>
-        <li><a href="contact.html">サービス内容</a></li>
+        <li><a @click="router().push('services')">サービス内容</a></li>
         <li><a href="contact.html">メニュー</a></li>
         <li><a href="contact.html">メンバー特典</a></li>
         <li><a href="contact.html">アクセス</a></li>
@@ -114,10 +114,10 @@
       </div>
 
       <div class="r">
-          <p class="animation-btn">
-            <a href="#" class="animation-btn-inner">もっとみる<i class="bi bi-arrow-right"></i></a>
-          </p>
-        </div>
+        <p class="animation-btn">
+          <a href="#" class="animation-btn-inner">もっとみる<i class="bi bi-arrow-right"></i></a>
+        </p>
+      </div>
 
     </section>
 
@@ -132,7 +132,7 @@
         width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-      <div class="c">
+      <div class="c mt-3">
         <p class="animation-btn">
           <a href="about.html" class="animation-btn-inner">こちらをご覧下さい</a>
         </p>
@@ -145,6 +145,8 @@
 </template>
 
 <script>
+import router from '@/router/index.js'
+
 const url = 'https://hp-api.onrender.com/api/characters'
 export default {
   data: () => ({
@@ -163,12 +165,15 @@ export default {
     ],
     slide_items: [
       {
+        id: 1,
         src: 'christmas.jpg'
       },
       {
+        id: 2,
         src: 'joy_sound.jpg'
       },
       {
+        id: 3,
         src: 'new_year.jpg'
       }
     ]
@@ -179,6 +184,9 @@ export default {
     })
   },
   methods: {
+    router() {
+      return router
+    },
     clickRow(item, row) {
       console.log('clickRow', row.item.actor)
     }

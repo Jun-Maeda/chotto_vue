@@ -13,7 +13,7 @@
       </ul>
 
       <div class="copy">
-        <small>Copyright&copy; <a href="index.html">東京北海旅館</a> All Rights Reserved.</small>
+        <small>Copyright&copy; <a href="index.html">chotto</a> All Rights Reserved.</small>
         <span class="pr"><a href="https://template-party.com/" target="_blank">《Web Design:Template-Party》</a></span>
       </div>
 
@@ -29,11 +29,12 @@
       <h2>【お問い合わせ】<br>0187-86-7001</h2>
 <!--      <h2>Contents</h2>-->
       <ul class="submenu">
-        <li><a href="greeting.html">お知らせ</a></li>
-        <li><a href="room.html">イベント</a></li>
-        <li><a href="dining.html">空室情報</a></li>
+        <li><a @click="router().push('/'); clickMenu()">ホーム</a></li>
+        <li><a @click="router().push('info_list'); clickMenu()">お知らせ</a></li>
+        <li><a @click="router().push('event_list'); clickMenu()">イベント</a></li>
+        <li><a @click="router().push('entory_room'); clickMenu()">空室情報</a></li>
         <li><a href="service.html">客室・料金</a></li>
-        <li><a href="contact.html">サービス内容</a></li>
+        <li><a @click="router().push('services'); clickMenu()">サービス内容</a></li>
         <li><a href="contact.html">メニュー</a></li>
         <li><a href="contact.html">メンバー特典</a></li>
         <li><a href="contact.html">アクセス</a></li>
@@ -61,7 +62,17 @@
 
 </template>
 <script>
+import router from '@/router/index.js'
+
 export default {
+  methods: {
+    router() {
+      return router
+    },
+    clickMenu(){
+      document.getElementById("menubar_hdr").click()
+    }
+  },
   data: () => ({
     login: true,
     items: [
