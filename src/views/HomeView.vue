@@ -53,7 +53,7 @@ let slide_items = ref([
       <ul>
         <li><a @click="router.push('info_list')">お知らせ</a></li>
         <li><a @click="router.push('event_list')">イベント</a></li>
-        <li><a @click="router.push('entory_room')">空室情報</a></li>
+        <li><a @click="router.push('entry_room')">空室情報</a></li>
         <li><a href="service.html">客室・料金</a></li>
         <li><a @click="router.push('services')">サービス内容</a></li>
         <li><a href="contact.html">メニュー</a></li>
