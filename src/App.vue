@@ -48,7 +48,7 @@ function clickMenu() {
         <li><a href="service.html">客室・料金</a></li>
         <li><a @click="router.push('services'); clickMenu()">サービス内容</a></li>
         <li><a href="contact.html">メニュー</a></li>
-        <li><a href="contact.html">メンバー特典</a></li>
+        <li><a @click="router.push('member'); clickMenu()">メンバー特典</a></li>
         <li><a href="contact.html">アクセス</a></li>
       </ul>
     </nav>

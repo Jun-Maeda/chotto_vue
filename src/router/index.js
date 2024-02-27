@@ -24,20 +24,25 @@ const router = createRouter({
       name: 'info_detail',
       component: () => import('../views/InfoDetailView.vue')
     },
-     {
+    {
       path: '/event_detail',
       name: 'event_detail',
       component: () => import('../views/EventDetailView.vue')
     },
-     {
+    {
       path: '/services',
       name: 'services',
       component: () => import('../views/ServiceView.vue')
     },
-     {
+    {
       path: '/entry_room',
       name: 'entry_room',
       component: () => import('../views/EntryRoomView.vue')
+    },
+    {
+      path: '/member',
+      name: 'member',
+      component: () => import('../views/MemberView.vue')
     }
   ]
 })
