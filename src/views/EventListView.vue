@@ -37,7 +37,6 @@ function clickItem(item, row) {
 </script>
 
 <template>
-  <main>
 
     <section>
 
@@ -76,7 +75,6 @@ function clickItem(item, row) {
     </section>
 
 
-  </main>
 
 </template>
 

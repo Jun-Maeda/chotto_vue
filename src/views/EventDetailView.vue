@@ -6,6 +6,8 @@ import router from '@/router/index.js'
 
 let event_detail = ref({})
 let event_detail_store = ref(eventDetailStore())
+let images = ref(['https://cdn.vuetifyjs.com/docs/images/graphics/gpus/1.png', 'https://cdn.vuetifyjs.com/docs/images/graphics/gpus/2.png','https://cdn.vuetifyjs.com/docs/images/graphics/gpus/3.png'])
+let detail = ref('イベントがあるのでキテねイベントがあるのでキテねイベントがあるのでキテねイベントがあるのでキテねイベントがあるのでキテねイベントがあるのでキテね')
 onMounted(() => {
   if (event_detail_store.value.event_data === null) {
       alert('エラー')
@@ -20,7 +22,6 @@ onMounted(() => {
 </script>
 
 <template>
-  <main>
 
     <section>
 
@@ -36,15 +37,27 @@ onMounted(() => {
     <section>
       <v-row justify="center">
         <v-col cols="12" sm="10">
-          <h2> {{ event_detail.title }}</h2>
-          <p>{{ event_detail.update_date }}</p>
+          <h2 class="ma-3"> {{ event_detail.title }}</h2>
+          <v-row justify="end">{{ event_detail.update_date }}</v-row>
+
+          <div class="mt-5">{{ detail }}</div>
+          <v-carousel
+          cycle
+          hide-delimiter-background
+          show-arrows="hover"
+        >
+          <v-carousel-item
+            v-for="(item,i) in images"
+            :key="i"
+            :src="item"
+          ></v-carousel-item>
+        </v-carousel>
         </v-col>
       </v-row>
 
     </section>
 
 
-  </main>
 
 </template>
 

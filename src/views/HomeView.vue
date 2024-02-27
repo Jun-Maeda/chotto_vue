@@ -58,7 +58,7 @@ let slide_items = ref([
         <li><a @click="router.push('services')">サービス内容</a></li>
         <li><a href="contact.html">メニュー</a></li>
         <li><a @click="router.push('member')">メンバー特典</a></li>
-        <li><a href="contact.html">アクセス</a></li>
+        <li><a @click="router.push('access')">アクセス</a></li>
       </ul>
     </nav>
 
@@ -159,7 +159,7 @@ let slide_items = ref([
 
       <div class="c mt-3">
         <p class="animation-btn">
-          <a href="about.html" class="animation-btn-inner">こちらをご覧下さい</a>
+          <a @click="router.push('/access')" class="animation-btn-inner">詳細はこちら</a>
         </p>
       </div>
 

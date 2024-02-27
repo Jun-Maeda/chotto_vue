@@ -43,8 +43,20 @@ const router = createRouter({
       path: '/member',
       name: 'member',
       component: () => import('../views/MemberView.vue')
+    },
+    {
+      path: '/access',
+      name: 'access',
+      component: () => import('../views/AccessView.vue')
     }
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  }
 })
+router.beforeEach((to, from, next) => {
+  window.scrollTo(0, 0);
+  next();
+});
 
 export default router
