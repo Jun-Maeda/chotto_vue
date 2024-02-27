@@ -1,8 +1,20 @@
+<script setup>
+import router from '@/router/index.js'
+
+function clickMenu() {
+  document.getElementById('menubar_hdr').click()
+}
+
+
+
+
+
+</script>
 <template>
 
 
   <div id="container">
-<RouterView/>
+    <RouterView />
 
 
     <footer>
@@ -27,14 +39,14 @@
 
     <nav>
       <h2>【お問い合わせ】<br>0187-86-7001</h2>
-<!--      <h2>Contents</h2>-->
+      <!--      <h2>Contents</h2>-->
       <ul class="submenu">
-        <li><a @click="router().push('/'); clickMenu()">ホーム</a></li>
-        <li><a @click="router().push('info_list'); clickMenu()">お知らせ</a></li>
-        <li><a @click="router().push('event_list'); clickMenu()">イベント</a></li>
-        <li><a @click="router().push('entory_room'); clickMenu()">空室情報</a></li>
+        <li><a @click="router.push('/'); clickMenu()" class="cursor-pointer">ホーム</a></li>
+        <li><a @click="router.push('info_list'); clickMenu()" class="cursor-pointer">お知らせ</a></li>
+        <li><a @click="router.push('event_list'); clickMenu()" class="cursor-pointer">イベント</a></li>
+        <li><a @click="router.push('entory_room'); clickMenu()" class="cursor-pointer">空室情報</a></li>
         <li><a href="service.html">客室・料金</a></li>
-        <li><a @click="router().push('services'); clickMenu()">サービス内容</a></li>
+        <li><a @click="router.push('services'); clickMenu()">サービス内容</a></li>
         <li><a href="contact.html">メニュー</a></li>
         <li><a href="contact.html">メンバー特典</a></li>
         <li><a href="contact.html">アクセス</a></li>
@@ -61,47 +73,3 @@
 
 
 </template>
-<script>
-import router from '@/router/index.js'
-
-export default {
-  methods: {
-    router() {
-      return router
-    },
-    clickMenu(){
-      document.getElementById("menubar_hdr").click()
-    }
-  },
-  data: () => ({
-    login: true,
-    items: [
-      { title: 'About', to: '/about', icon: 'mdi-clock' },
-      { title: 'Form', to: '/form', icon: 'mdi-map-marker' },
-      { title: 'Form Send', to: '/form_send', icon: 'mdi-map-marker' },
-      { title: 'Form Validate', to: '/form_validate', icon: 'mdi-map-marker' },
-      { title: 'tab', to: '/tab', icon: 'mdi-earth' },
-      { title: 'ZipCode', to: '/zipcode', icon: 'mdi-spider-thread' },
-      { title: 'HarryPotter', to: '/harry', icon: 'mdi-magic-staff' },
-      { title: '入門', to: '/nyumon', icon: 'mdi-arrow-left-bold' },
-      { title: 'Pinia', to: '/pinia', icon: 'mdi-image-filter-drama' },
-      { title: 'Pinia2', to: '/pinia2', icon: 'mdi-image-filter-drama' },
-      { title: 'Chart', to: '/chart', icon: 'mdi-image-filter-drama' }
-    ],
-    tables: [
-      { title: 'Table', to: '/table', icon: 'mdi-phone-outgoing' },
-      { title: 'Table2', to: '/table2', icon: 'mdi-alert-circle-outline' }
-    ],
-    pivtots: [
-      { title: 'PiVToT Get', to: '/pivtot_get', icon: 'mdi-image-filter-hdr' },
-      { title: 'PiVToT Post', to: '/pivtot_post', icon: 'mdi-thumb-up-outline' }
-    ],
-    drawer: false,
-    links: [
-      'Home',
-      'About',
-      'Contact'
-    ]
-  })
-}
-</script>

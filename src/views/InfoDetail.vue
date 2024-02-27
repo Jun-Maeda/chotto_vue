@@ -1,5 +1,23 @@
 <script setup>
 import { infoDetailStore } from '@/stores/info_detail.js'
+import { onMounted } from 'vue'
+import { ref } from 'vue'
+import router from '@/router/index.js'
+
+let info_detail = ref({})
+let info_detail_store = ref(infoDetailStore())
+onMounted(() => {
+  if (info_detail_store.value.info_data === null) {
+      alert('エラー')
+      // ホームへリダイレクト
+      router.replace({
+        name: 'home'
+      })
+    } else {
+      info_detail.value = info_detail_store.value.info_data
+    }
+})
+
 </script>
 
 <template>
@@ -31,27 +49,3 @@ import { infoDetailStore } from '@/stores/info_detail.js'
 
 </template>
 
-<script>
-export default {
-  data: () => ({
-    info_detail: {},
-    // dialogDelete: false,
-    info_detail_store: infoDetailStore(),
-  }),
-  mounted() {
-    // this.info_detail = this.info_detail_store.info_data
-
-    // ストアにデータが入っていなければ一覧にリダイレクト
-    if (this.info_detail_store.info_data === null) {
-      alert('エラー')
-      // ホームへリダイレクト
-      this.$router.replace({
-        name: 'home',
-      })
-    } else {
-      this.info_detail = this.info_detail_store.info_data
-    }
-  },
-  methods: {},
-}
-</script>

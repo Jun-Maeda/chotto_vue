@@ -1,5 +1,22 @@
 <script setup>
 import { eventDetailStore } from '@/stores/event_detail.js'
+import { onMounted } from 'vue'
+import { ref } from 'vue'
+import router from '@/router/index.js'
+
+let event_detail = ref({})
+let event_detail_store = ref(eventDetailStore())
+onMounted(() => {
+  if (event_detail_store.value.event_data === null) {
+      alert('エラー')
+      // ホームへリダイレクト
+      router.replace({
+        name: 'home'
+      })
+    } else {
+      event_detail.value = event_detail_store.value.event_data
+    }
+})
 </script>
 
 <template>
@@ -31,29 +48,3 @@ import { eventDetailStore } from '@/stores/event_detail.js'
 
 </template>
 
-<script>
-import { eventDetailStore } from '@/stores/event_detail.js'
-
-export default {
-  data: () => ({
-    event_detail: {},
-    // dialogDelete: false,
-    event_detail_store: eventDetailStore(),
-  }),
-  mounted() {
-    // this.info_detail = this.info_detail_store.info_data
-
-    // ストアにデータが入っていなければ一覧にリダイレクト
-    if (this.event_detail_store.event_data === null) {
-      alert('エラー')
-      // ホームへリダイレクト
-      this.$router.replace({
-        name: 'home',
-      })
-    } else {
-      this.event_detail = this.event_detail_store.event_data
-    }
-  },
-  methods: {},
-}
-</script>

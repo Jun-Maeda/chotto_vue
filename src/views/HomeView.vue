@@ -1,3 +1,49 @@
+<script setup>
+// import { onMounted } from 'vue'
+import { ref } from 'vue'
+// import axios from 'axios'
+import router from '@/router/index.js'
+
+// const url = 'https://hp-api.onrender.com/api/characters'
+// let search = ref('')
+// let headers = ref([
+//   {
+//     align: 'start',
+//     key: 'id',
+//     title: 'ID'
+//   },
+//   { key: 'name', align: 'end', title: '名前' },
+//   { key: 'gender', align: 'end', title: '性別' },
+//   { key: 'house', align: 'end', title: '寮' },
+//   { key: 'dateOfBirth', align: 'end', title: '誕生日' },
+//   { key: 'actor', align: 'end', title: '役者名' }
+// ])
+let slide_items = ref([
+  {
+    id: 1,
+    src: 'christmas.jpg'
+  },
+  {
+    id: 2,
+    src: 'joy_sound.jpg'
+  },
+  {
+    id: 3,
+    src: 'new_year.jpg'
+  }
+])
+// onMounted(() => {
+//   axios.get(url).then((res) => {
+//     characters.value = res.data
+//   })
+// })
+//
+// function clickRow(item, row) {
+//   console.log('clickRow', row.item.actor)
+// }
+
+
+</script>
 <template>
   <header>
 
@@ -5,11 +51,11 @@
 
     <nav>
       <ul>
-        <li><a @click="router().push('info_list')">お知らせ</a></li>
-        <li><a @click="router().push('event_list')">イベント</a></li>
-        <li><a @click="router().push('entory_room')">空室情報</a></li>
+        <li><a @click="router.push('info_list')">お知らせ</a></li>
+        <li><a @click="router.push('event_list')">イベント</a></li>
+        <li><a @click="router.push('entory_room')">空室情報</a></li>
         <li><a href="service.html">客室・料金</a></li>
-        <li><a @click="router().push('services')">サービス内容</a></li>
+        <li><a @click="router.push('services')">サービス内容</a></li>
         <li><a href="contact.html">メニュー</a></li>
         <li><a href="contact.html">メンバー特典</a></li>
         <li><a href="contact.html">アクセス</a></li>
@@ -51,7 +97,8 @@
 
         <div class="r">
           <p class="animation-btn">
-            <a @click="router().push('info_list')" class="animation-btn-inner">もっとみる<i class="bi bi-arrow-right"></i></a>
+            <a @click="router.push('info_list')" class="animation-btn-inner">もっとみる<i
+              class="bi bi-arrow-right"></i></a>
           </p>
         </div>
 
@@ -92,7 +139,8 @@
 
       <div class="r">
         <p class="animation-btn">
-          <a @click="router().push('event_list')" class="animation-btn-inner">もっとみる<i class="bi bi-arrow-right"></i></a>
+          <a @click="router.push('event_list')" class="animation-btn-inner">もっとみる<i
+            class="bi bi-arrow-right"></i></a>
         </p>
       </div>
 
@@ -121,52 +169,3 @@
 
 </template>
 
-<script>
-import router from '@/router/index.js'
-
-const url = 'https://hp-api.onrender.com/api/characters'
-export default {
-  data: () => ({
-    search: '',
-    headers: [
-      {
-        align: 'start',
-        key: 'id',
-        title: 'ID'
-      },
-      { key: 'name', align: 'end', title: '名前' },
-      { key: 'gender', align: 'end', title: '性別' },
-      { key: 'house', align: 'end', title: '寮' },
-      { key: 'dateOfBirth', align: 'end', title: '誕生日' },
-      { key: 'actor', align: 'end', title: '役者名' }
-    ],
-    slide_items: [
-      {
-        id: 1,
-        src: 'christmas.jpg'
-      },
-      {
-        id: 2,
-        src: 'joy_sound.jpg'
-      },
-      {
-        id: 3,
-        src: 'new_year.jpg'
-      }
-    ]
-  }),
-  mounted() {
-    this.axios.get(url).then((res) => {
-      this.characters = res.data
-    })
-  },
-  methods: {
-    router() {
-      return router
-    },
-    clickRow(item, row) {
-      console.log('clickRow', row.item.actor)
-    }
-  }
-}
-</script>
