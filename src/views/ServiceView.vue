@@ -158,8 +158,8 @@ function roomPage(id) {
 
     <div class="title-bg" id="greeting">
       <h2 class="mb0">
-        <div class="tate">サービス内容</div>
-        <div class="yoko">Services</div>
+        <div class="tate">サービス・設備</div>
+        <div class="yoko">Services & Facilities</div>
       </h2>
     </div>
 

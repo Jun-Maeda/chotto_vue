@@ -18,7 +18,7 @@
     <section>
       <v-row justify="center">
         <v-col cols="12" sm="10">
-          <p class="large c">0187-86-7001</p>
+          <p class="large c"><a href="tel:0187867001">0187-86-7001</a></p>
           <p class="c mb-10">
             住所：秋田県仙北郡美郷町六郷道尻１８１−１<br>
             国道13号線沿いにございます。

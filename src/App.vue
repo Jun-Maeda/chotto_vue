@@ -38,15 +38,16 @@ function clickMenu() {
   <div id="menubar">
 
     <nav>
-      <h2>【お問い合わせ】<br>0187-86-7001</h2>
+      <h2>【お問い合わせ】<br><a href="tel:0187867001">0187-86-7001</a></h2>
       <!--      <h2>Contents</h2>-->
       <ul class="submenu">
         <li><a @click="router.push('/'); clickMenu()" class="cursor-pointer">ホーム</a></li>
         <li><a @click="router.push('info_list'); clickMenu()" class="cursor-pointer">お知らせ</a></li>
         <li><a @click="router.push('event_list'); clickMenu()" class="cursor-pointer">イベント</a></li>
         <li><a @click="router.push('entry_room'); clickMenu()" class="cursor-pointer">空室情報</a></li>
-        <li><a href="service.html">客室・料金</a></li>
-        <li><a @click="router.push('services'); clickMenu()">サービス内容</a></li>
+        <li><a href="service.html">客室</a></li>
+        <li><a href="service.html">料金</a></li>
+        <li><a @click="router.push('services'); clickMenu()">サービス・設備</a></li>
         <li><a href="contact.html">メニュー</a></li>
         <li><a @click="router.push('member'); clickMenu()">メンバー特典</a></li>
         <li><a @click="router.push('access'); clickMenu()">アクセス</a></li>
