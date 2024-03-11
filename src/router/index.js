@@ -49,6 +49,12 @@ const router = createRouter({
       name: 'access',
       component: () => import('../views/AccessView.vue')
     }
+    ,
+    {
+      path: '/price',
+      name: 'price',
+      component: () => import('../views/PriceView.vue')
+    }
   ],
   scrollBehavior (to, from, savedPosition) {
     return { x: 0, y: 0 }

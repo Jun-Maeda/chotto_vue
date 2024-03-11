@@ -47,7 +47,7 @@ let slide_items = ref([
 <template>
   <header>
 
-    <h1 id="logo"><a href="index.html"><img src="@/images/chotto_logo.png" alt="ちょっと"></a></h1>
+    <h1 id="logo"><img src="@/images/chotto_logo.png" alt="ちょっと"></h1>
 
     <nav>
       <ul>
@@ -55,7 +55,7 @@ let slide_items = ref([
         <li><a @click="router.push('event_list')">イベント</a></li>
         <li><a @click="router.push('entry_room')">空室情報</a></li>
         <li><a href="service.html">客室</a></li>
-        <li><a href="service.html">料金</a></li>
+        <li><a @click="router.push('price')">料金</a></li>
         <li><a @click="router.push('services')">サービス・設備</a></li>
         <li><a href="contact.html">メニュー</a></li>
         <li><a @click="router.push('member')">メンバー特典</a></li>

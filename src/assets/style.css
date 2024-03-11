@@ -140,9 +140,9 @@ header {
 /*トップページのヘッダーブロックへの追加指定*/
 .home header {
     justify-content: space-around; /*並びかたの種類の指定*/
-    padding: 10% 0; /*ヘッダー内の余白。上下、左右への指定。*/
+    padding: 8% 0; /*ヘッダー内の余白。上下、左右への指定。*/
     position: relative; /*スライドショーを配置する為に必要な指定。スライドショー自体の設定はslide.cssになります。*/
-    margin-bottom: 100px; /*ヘッダーの下に空けるスペース*/
+    margin-bottom: 50px; /*ヘッダーの下に空けるスペース*/
 }
 
 /*ロゴ*/
@@ -203,6 +203,8 @@ header nav a {
     display: inline-block;
     padding: 1em 0.5em; /*上下、左右への余白*/
     border: 1px solid transparent; /*枠線を透明(transparent)でセットしておく*/
+    text-shadow: 1px 2px 2px #000;
+    font-size: 19px;
 }
 
 /*マウスオン時*/
@@ -304,7 +306,7 @@ p + h3, p + h2 {
 /*「ご挨拶」ページの見出し
 ---------------------------------------------------------------------------*/
 #greeting {
-    background: url(../images/1.jpg) no-repeat center center / cover; /*背景画像の読み込み*/
+    background: url(../images/room_1.jpg) no-repeat center center / cover; /*背景画像の読み込み*/
     padding: 1rem; /*ボックス内の余白。１文字分。*/
     margin-left: -100px; /*mainのmarginの数字にマイナスをつけます。*/
     width: calc(100% + 200px); /*mainのmarginの２倍をここの200pxでセットしています。上の行で左に-100pxずれた画像を幅一杯にする為の設定です。*/
@@ -330,12 +332,14 @@ p + h3, p + h2 {
 .title-bg h2 .tate {
     /*writing-mode: vertical-rl;*/
     /*text-orientation: upright;*/
+    text-shadow: 1px 2px 3px #808080;
 }
 
 /*横書きで使う際の指定。※縦書きを横書きにする為の指定ではないのでご注意下さい。*/
 .title-bg h2 .yoko {
     margin-top: 1rem; /*上に空けるスペース*/
     font-size: 0.4em; /*文字サイズ。親要素の40%。*/
+    text-shadow: 1px 2px 3px #808080;
 }
 
 
