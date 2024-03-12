@@ -5,6 +5,22 @@ const types = ref([])
 const tab = ref(1)
 const price_tab = ref('detail')
 const services = ref([])
+const detail_header = ref([
+  { title: '利用日', align: 'center', width: '50%', key: 'service_date' },
+  { title: '利用時間', align: 'center', width: '50%', key: 'service_time' }
+])
+const price_header = ref([
+    { title: '利用日', align: 'center', width: '50%', key: 'service_date' },
+    { title: '価格', align: 'center', width: '50%', key: 'price' }
+  ]
+)
+
+
+function roomPage(id) {
+  // ここでpiniaに保存して部屋ページへ
+  console.log(id)
+}
+
 
 onMounted(() => {
   types.value = [
@@ -76,7 +92,7 @@ onMounted(() => {
         'detail': [
           {
             'id': 3,
-            'serice_date': '全日',
+            'service_date': '全日',
             'service_time': '6:00～24:00',
             'priority': 0
           }
@@ -84,13 +100,13 @@ onMounted(() => {
         'prices': [
           {
             'id': 3,
-            'serice_date': '月～金・祝前日',
+            'service_date': '月～金・祝前日',
             'price': 5800,
             'priority': 0
           },
           {
             'id': 4,
-            'serice_date': '土・日・祝日',
+            'service_date': '土・日・祝日',
             'price': 6300,
             'priority': 1
           }
@@ -102,7 +118,7 @@ onMounted(() => {
         'detail': [
           {
             'id': 4,
-            'serice_date': '全日',
+            'service_date': '全日',
             'service_time': '6:00～17:00',
             'priority': 0
           }
@@ -110,13 +126,13 @@ onMounted(() => {
         'prices': [
           {
             'id': 5,
-            'serice_date': '月～金・祝前日',
+            'service_date': '月～金・祝前日',
             'price': 6300,
             'priority': 0
           },
           {
             'id': 6,
-            'serice_date': '土・日・祝日',
+            'service_date': '土・日・祝日',
             'price': 6800,
             'priority': 1
           }
@@ -128,7 +144,7 @@ onMounted(() => {
         'detail': [
           {
             'id': 5,
-            'serice_date': '全日',
+            'service_date': '全日',
             'service_time': '13:00～19:00',
             'priority': 0
           }
@@ -136,13 +152,13 @@ onMounted(() => {
         'prices': [
           {
             'id': 8,
-            'serice_date': '月～金・祝前日',
+            'service_date': '月～金・祝前日',
             'price': 6800,
             'priority': 0
           },
           {
             'id': 7,
-            'serice_date': '土・日・祝日',
+            'service_date': '土・日・祝日',
             'price': 7300,
             'priority': 1
           }
@@ -154,13 +170,13 @@ onMounted(() => {
         'detail': [
           {
             'id': 1,
-            'serice_date': '日～木・祝日',
+            'service_date': '日～木・祝日',
             'service_time': '18:00～翌12:00',
             'priority': 0
           },
           {
             'id': 6,
-            'serice_date': '金・土・祝前日',
+            'service_date': '金・土・祝前日',
             'service_time': '19:00～翌10:00',
             'priority': 1
           }
@@ -168,13 +184,13 @@ onMounted(() => {
         'prices': [
           {
             'id': 9,
-            'serice_date': '日～木・祝日',
+            'service_date': '日～木・祝日',
             'price': 7800,
             'priority': 0
           },
           {
             'id': 10,
-            'serice_date': '金・土・祝前日',
+            'service_date': '金・土・祝前日',
             'price': 8400,
             'priority': 1
           }
@@ -218,10 +234,8 @@ onMounted(() => {
           >
             <v-container fluid>
               <v-row>
-                <v-col
+                <v-col cols="12"
                 >
-                  {{ type.name }}
-                  {{ services.name }}
                   <v-expansion-panels class="my-4" variant="popout">
                     <v-expansion-panel v-for="s in services.services" :key="s"
                     >
@@ -230,44 +244,63 @@ onMounted(() => {
                       </v-expansion-panel-title>
                       <v-expansion-panel-text>
                         <div class="d-flex flex-row">
-                        <v-tabs
-                          v-model="price_tab"
-                          color="primary"
-                          direction="vertical"
-                        >
-                          <v-tab value="detail">
-                            時間
-                          </v-tab>
-                          <v-tab value="prices">
-                            料金
-                          </v-tab>
-                        </v-tabs>
-                        <v-window v-model="price_tab">
-                          <v-window-item value="detail">
-                            <v-card flat>
-                              <v-card-text>
-                                時間
-                              </v-card-text>
-                            </v-card>
-                          </v-window-item>
-                          <v-window-item value="prices">
-                            <v-card flat>
-                              <v-card-text>
-                                料金
-                              </v-card-text>
-                            </v-card>
-                          </v-window-item>
-                        </v-window>
+                          <v-tabs
+                            v-model="price_tab"
+                            color="primary"
+                            direction="vertical"
+                          >
+                            <v-tab value="detail">
+                              時間
+                            </v-tab>
+                            <v-tab value="prices">
+                              料金
+                            </v-tab>
+                          </v-tabs>
+                          <v-window v-model="price_tab" style="width: 80%" class="pa-0 pa-sm-5">
+                            <v-window-item value="detail">
+                              <v-data-table-virtual :headers="detail_header" :items="s.detail" density="compact"
+                                                    :sort-by="[{ key: 'priority', order: 'asc' }]"
+                                                    color="blue-grey-lighten-5"
+                              >
+                                <template #headers />
+                              </v-data-table-virtual>
+
+                            </v-window-item>
+                            <v-window-item value="prices">
+                              <v-data-table-virtual :headers="price_header" :items="s.prices" density="compact"
+                                                    :sort-by="[{ key: 'priority', order: 'asc' }]"
+                                                    color="blue-grey-lighten-5"
+                              >
+                                <template #headers />
+                                <template v-slot:item.price="{ item }">
+                                  {{ item.price }}円(税込)
+                                </template>
+                              </v-data-table-virtual>
+                            </v-window-item>
+                          </v-window>
                         </div>
                       </v-expansion-panel-text>
                     </v-expansion-panel>
                   </v-expansion-panels>
                 </v-col>
+                <v-col cols="12">
+                  <v-list lines="one" :items="vip_service" bg-color="rgba(255,255,255,0.1)" base-color="white"
+                  />
+                  <v-card title="対象のお部屋" class="mt-5 mx-2" variant="outlined">
+                    <template v-slot:text>
+                      <v-chip class="ma-1" v-for="(room, key) in services.rooms" :key="key" :ripple="false" link
+                              variant="outlined"
+                              @click="roomPage(room.id)">
+                        {{ room.name }}
+                      </v-chip>
+                    </template>
+                  </v-card>
+
+                </v-col>
               </v-row>
             </v-container>
           </v-window-item>
         </v-window>
-
       </v-col>
     </v-row>
   </section>

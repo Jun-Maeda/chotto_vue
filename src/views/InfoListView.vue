@@ -64,5 +64,14 @@ function clickItem(item, row) {
 
 
 </template>
-
+<style>
+/*v-data-tableの設定*/
+.v-table {
+    background-color: rgba(0,0,0,0.5) !important;
+    color : white !important;
+}
+.v-data-table__tr:hover {
+    background-color: rgba(255,255,255,0.5);
+}
+</style>
 
