@@ -223,7 +223,7 @@ onMounted(() => {
         <v-tabs
           v-model="tab"
           align-tabs="center"
-          color="red-lighten-1"
+          color="purple-accent-1"
         >
           <v-tab v-for="(type, key) in types" :key="key" :value="type.id"> {{ type.name }}</v-tab>
         </v-tabs>

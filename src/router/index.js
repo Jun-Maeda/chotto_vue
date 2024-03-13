@@ -54,6 +54,11 @@ const router = createRouter({
       path: '/price',
       name: 'price',
       component: () => import('../views/PriceView.vue')
+    },
+    {
+      path: '/room_list',
+      name: 'room_list',
+      component: () => import('../views/RoomListView.vue')
     }
   ],
   scrollBehavior (to, from, savedPosition) {
