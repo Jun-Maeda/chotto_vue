@@ -57,7 +57,7 @@ let slide_items = ref([
         <li><a @click="router.push('room_list')">お部屋</a></li>
         <li><a @click="router.push('price')">料金</a></li>
         <li><a @click="router.push('services')">サービス・設備</a></li>
-        <li><a href="contact.html">メニュー</a></li>
+        <li><a @click="router.push('menu')">メニュー</a></li>
         <li><a @click="router.push('member')">メンバー特典</a></li>
         <li><a @click="router.push('access')">アクセス</a></li>
       </ul>

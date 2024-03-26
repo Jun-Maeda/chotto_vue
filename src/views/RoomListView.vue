@@ -1,9 +1,20 @@
 <script setup>
 import { ref, onMounted } from 'vue'
+import { roomDetailStore } from '@/stores/room_detail.js'
+import router from '@/router/index.js'
 
 const tab = ref(1)
 const types = ref([])
 const room_list = ref([])
+
+function roomLink(id) {
+  let room_store = roomDetailStore()
+  room_store.room_data = id
+  router.push({
+    name: 'room'
+  })
+
+}
 
 onMounted(() => {
   types.value = [
@@ -100,11 +111,13 @@ onMounted(() => {
             :value="type.id"
           >
             <div v-for="room in room_list" :key="room" class="list">
-              <figure><a href=""><img src="@/images/room_1.jpg" alt=""></a></figure>
+              <figure><a @click="roomLink(room.id)"><img src="@/images/room_1.jpg" alt=""></a></figure>
               <div>
-                <h4><a href="">{{ room.name }}</a></h4>
+                <h4><a @click="roomLink(room.id)">{{ room.name }}</a></h4>
                 <p>
-                  <v-chip v-for="limited in room.limiteds" :key="limited" variant="outlined" class="mr-2">{{ limited.name }}</v-chip>
+                  <v-chip v-for="limited in room.limiteds" :key="limited" variant="outlined" class="mr-2 mb-2">
+                    {{ limited.name }}
+                  </v-chip>
                 </p>
               </div>
             </div>

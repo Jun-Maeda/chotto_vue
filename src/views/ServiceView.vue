@@ -305,14 +305,14 @@ function roomPage(id) {
       </div>
     </div>
     <div class="list">
-      <figure><img src="@/images/sample_service1.jpg" alt=""></figure>
+      <figure><img src="@/images/rental.jpg" alt=""></figure>
       <div>
-        <h4>インバスアイテム無料貸し出し</h4>
-        <p>人気のシャンプー、コンディショナー、ボディソープを豊富な種類で御用意しております。</p>
+        <h4>無料貸し出し</h4>
+        <p>人気のシャンプー、コンディショナー、ボディソープ、充電ケーブル、ドライヤー、ヘアアイロンなど豊富な種類で御用意しております。</p>
       </div>
     </div>
     <div class="list">
-      <figure><img src="@/images/sample_service1.jpg" alt=""></figure>
+      <figure><img src="@/images/keisyoku.jpg" alt=""></figure>
       <div>
         <h4>お食事・軽食</h4>
         <p>

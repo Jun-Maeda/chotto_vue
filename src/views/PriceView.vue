@@ -273,7 +273,7 @@ onMounted(() => {
                               >
                                 <template #headers />
                                 <template v-slot:item.price="{ item }">
-                                  {{ item.price }}円(税込)
+                                  {{ item.price.toLocaleString() }}円(税込)
                                 </template>
                               </v-data-table-virtual>
                             </v-window-item>
@@ -284,8 +284,8 @@ onMounted(() => {
                   </v-expansion-panels>
                 </v-col>
                 <v-col cols="12">
-                  <v-list lines="one" :items="vip_service" bg-color="rgba(255,255,255,0.1)" base-color="white"
-                  />
+<!--                  <v-list lines="one" :items="vip_service" bg-color="rgba(255,255,255,0.1)" base-color="white"-->
+<!--                  />-->
                   <v-card title="対象のお部屋" class="mt-5 mx-2" variant="outlined">
                     <template v-slot:text>
                       <v-chip class="ma-1" v-for="(room, key) in services.rooms" :key="key" :ripple="false" link

@@ -60,6 +60,17 @@ const router = createRouter({
       name: 'room_list',
       component: () => import('../views/RoomListView.vue')
     }
+    ,
+    {
+      path: '/room',
+      name: 'room',
+      component: () => import('../views/RoomDetailView.vue')
+    },
+    {
+      path: '/menu',
+      name: 'menu',
+      component: () => import('../views/MenuView.vue')
+    }
   ],
   scrollBehavior (to, from, savedPosition) {
     return { x: 0, y: 0 }

@@ -48,7 +48,7 @@ function clickMenu() {
         <li><a @click="router.push('room_list'); clickMenu()" class="cursor-pointer">お部屋</a></li>
         <li><a @click="router.push('price'); clickMenu()" class="cursor-pointer">料金</a></li>
         <li><a @click="router.push('services'); clickMenu()">サービス・設備</a></li>
-        <li><a href="contact.html">メニュー</a></li>
+        <li><a @click="router.push('menu'); clickMenu()">メニュー</a></li>
         <li><a @click="router.push('member'); clickMenu()">メンバー特典</a></li>
         <li><a @click="router.push('access'); clickMenu()">アクセス</a></li>
       </ul>
