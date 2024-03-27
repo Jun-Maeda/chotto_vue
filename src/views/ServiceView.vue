@@ -274,7 +274,7 @@ function roomPage(id) {
     <small
       class="ma-3">ご希望によってご利用いただけるサービスです。</small>
     <div class="list">
-      <figure><img src="@/images/sample_service1.jpg" alt=""></figure>
+      <figure><img src="@/images/rental_cos.jpg" alt=""></figure>
       <div>
         <h4>コスチュームレンタル</h4>
         <p>通常レンタル料1着800円・メンバー様1着500円で御利用頂けます。</p>
