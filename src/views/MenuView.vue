@@ -29,470 +29,534 @@ function get_category(menus) {
 
 onMounted(() => {
   get_data.value = {
-    'menu': [
-      {
-        'id': 1,
-        'name': 'FOOD',
-        'categories': [
-          {
-            'id': 4,
-            'name': '洋食',
-            'menus': [
-              {
-                'id': 3,
-                'name': 'ローストチキンセット',
-                'price': 600,
-                'member_price': 480,
-                'welcome_flg': false,
-                'images': [],
-                'text': 'バケットorライスのどちらかをお申し付けください'
-              },
-              {
-                'id': 4,
-                'name': 'ビーフシチューセット',
-                'price': 1000,
-                'member_price': 800,
-                'welcome_flg': false,
-                'images': [],
-                'text': 'バケットorライスのどちらかをお申し付けください'
-              },
-              {
-                'id': 5,
-                'name': 'ハンバーグセット',
-                'price': 700,
-                'member_price': 560,
-                'welcome_flg': false,
-                'images': [],
-                'text': 'バケットorライスのどちらかをお申し付けください'
-              },
-              {
-                'id': 6,
-                'name': 'カレーライス',
-                'price': 500,
-                'member_price': 400,
-                'welcome_flg': false,
-                'images': [],
-                'text': 'プラス¥50でエッグカレーにできます'
-              },
-              {
-                'id': 7,
-                'name': 'ドライカレー',
-                'price': 500,
-                'member_price': 400,
-                'welcome_flg': false,
-                'images': [],
-                'text': 'スープが付きます'
-              },
-              {
-                'id': 8,
-                'name': 'オムライス',
-                'price': 700,
-                'member_price': 560,
-                'welcome_flg': false,
-                'images': [],
-                'text': 'ケチャップorデミグラスソースお選びください\r\nスープ・サラダ付き'
-              },
-              {
-                'id': 9,
-                'name': 'エビピラフ',
-                'price': 500,
-                'member_price': 400,
-                'welcome_flg': false,
-                'images': [],
-                'text': 'スープ・サラダ付き'
-              },
-              {
-                'id': 10,
-                'name': 'カルボナーラ',
-                'price': 600,
-                'member_price': 480,
-                'welcome_flg': false,
-                'images': [],
-                'text': 'スープ・サラダ付き'
-              },
-              {
-                'id': 11,
-                'name': 'ナポリタン',
-                'price': 600,
-                'member_price': 480,
-                'welcome_flg': false,
-                'images': [],
-                'text': 'スープ・サラダ付き'
-              }
+    "menu": [
+        {
+            "id": 1,
+            "name": "FOOD",
+            "categories": [
+                {
+                    "id": 4,
+                    "name": "洋食",
+                    "menus": [
+                        {
+                            "id": 3,
+                            "name": "ローストチキンセット",
+                            "price": 600,
+                            "member_price": 480,
+                            "welcome_flg": false,
+                            "images": [],
+                            "text": "バケットorライスのどちらかをお申し付けください"
+                        },
+                        {
+                            "id": 4,
+                            "name": "ビーフシチューセット",
+                            "price": 1000,
+                            "member_price": 800,
+                            "welcome_flg": false,
+                            "images": [],
+                            "text": "バケットorライスのどちらかをお申し付けください"
+                        },
+                        {
+                            "id": 5,
+                            "name": "ハンバーグセット",
+                            "price": 700,
+                            "member_price": 560,
+                            "welcome_flg": false,
+                            "images": [],
+                            "text": "バケットorライスのどちらかをお申し付けください"
+                        },
+                        {
+                            "id": 6,
+                            "name": "カレーライス",
+                            "price": 500,
+                            "member_price": 400,
+                            "welcome_flg": false,
+                            "images": [],
+                            "text": "プラス¥50でエッグカレーにできます"
+                        },
+                        {
+                            "id": 7,
+                            "name": "ドライカレー",
+                            "price": 500,
+                            "member_price": 400,
+                            "welcome_flg": false,
+                            "images": [],
+                            "text": "スープが付きます"
+                        },
+                        {
+                            "id": 8,
+                            "name": "オムライス",
+                            "price": 700,
+                            "member_price": 560,
+                            "welcome_flg": false,
+                            "images": [],
+                            "text": "ケチャップorデミグラスソースお選びください\r\nスープ・サラダ付き"
+                        },
+                        {
+                            "id": 9,
+                            "name": "エビピラフ",
+                            "price": 500,
+                            "member_price": 400,
+                            "welcome_flg": false,
+                            "images": [],
+                            "text": "スープ・サラダ付き"
+                        },
+                        {
+                            "id": 10,
+                            "name": "カルボナーラ",
+                            "price": 600,
+                            "member_price": 480,
+                            "welcome_flg": false,
+                            "images": [],
+                            "text": "スープ・サラダ付き"
+                        },
+                        {
+                            "id": 11,
+                            "name": "ナポリタン",
+                            "price": 600,
+                            "member_price": 480,
+                            "welcome_flg": false,
+                            "images": [],
+                            "text": "スープ・サラダ付き"
+                        }
+                    ]
+                },
+                {
+                    "id": 5,
+                    "name": "丼",
+                    "menus": [
+                        {
+                            "id": 12,
+                            "name": "牛丼",
+                            "price": 600,
+                            "member_price": 480,
+                            "welcome_flg": false,
+                            "images": [],
+                            "text": "味噌汁付き"
+                        },
+                        {
+                            "id": 13,
+                            "name": "中華丼",
+                            "price": 600,
+                            "member_price": 480,
+                            "welcome_flg": false,
+                            "images": [],
+                            "text": "味噌汁付き"
+                        }
+                    ]
+                },
+                {
+                    "id": 6,
+                    "name": "炒",
+                    "menus": [
+                        {
+                            "id": 14,
+                            "name": "チャーハン",
+                            "price": 480,
+                            "member_price": 380,
+                            "welcome_flg": false,
+                            "images": [],
+                            "text": "スープ付き"
+                        },
+                        {
+                            "id": 15,
+                            "name": "焼きそば",
+                            "price": 400,
+                            "member_price": 320,
+                            "welcome_flg": false,
+                            "images": [],
+                            "text": "スープ付き"
+                        }
+                    ]
+                },
+                {
+                    "id": 8,
+                    "name": "Side",
+                    "menus": [
+                        {
+                            "id": 22,
+                            "name": "フレンチトースト",
+                            "price": 500,
+                            "member_price": 400,
+                            "welcome_flg": false,
+                            "images": [],
+                            "text": ""
+                        },
+                        {
+                            "id": 23,
+                            "name": "ガーリックトースト",
+                            "price": 300,
+                            "member_price": 240,
+                            "welcome_flg": false,
+                            "images": [],
+                            "text": ""
+                        },
+                        {
+                            "id": 24,
+                            "name": "たこ焼き",
+                            "price": 300,
+                            "member_price": 240,
+                            "welcome_flg": false,
+                            "images": [],
+                            "text": ""
+                        },
+                        {
+                            "id": 25,
+                            "name": "もつ煮込み",
+                            "price": 500,
+                            "member_price": 400,
+                            "welcome_flg": false,
+                            "images": [],
+                            "text": ""
+                        },
+                        {
+                            "id": 26,
+                            "name": "枝豆",
+                            "price": 300,
+                            "member_price": 240,
+                            "welcome_flg": false,
+                            "images": [],
+                            "text": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 9,
+                    "name": "うどん",
+                    "menus": [
+                        {
+                            "id": 16,
+                            "name": "天ぷらうどん",
+                            "price": 400,
+                            "member_price": 320,
+                            "welcome_flg": false,
+                            "images": [],
+                            "text": ""
+                        },
+                        {
+                            "id": 17,
+                            "name": "月見うどん",
+                            "price": 400,
+                            "member_price": 320,
+                            "welcome_flg": false,
+                            "images": [],
+                            "text": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 10,
+                    "name": "そば",
+                    "menus": [
+                        {
+                            "id": 18,
+                            "name": "天ぷらそば",
+                            "price": 400,
+                            "member_price": 320,
+                            "welcome_flg": false,
+                            "images": [],
+                            "text": ""
+                        },
+                        {
+                            "id": 19,
+                            "name": "月見そば",
+                            "price": 400,
+                            "member_price": 320,
+                            "welcome_flg": false,
+                            "images": [],
+                            "text": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 11,
+                    "name": "ラーメン",
+                    "menus": [
+                        {
+                            "id": 20,
+                            "name": "しょうゆラーメン",
+                            "price": 500,
+                            "member_price": 400,
+                            "welcome_flg": false,
+                            "images": [],
+                            "text": ""
+                        },
+                        {
+                            "id": 21,
+                            "name": "ちゃんぽん",
+                            "price": 680,
+                            "member_price": 540,
+                            "welcome_flg": false,
+                            "images": [],
+                            "text": ""
+                        }
+                    ]
+                }
             ]
-          },
-          {
-            'id': 5,
-            'name': '丼',
-            'menus': [
-              {
-                'id': 12,
-                'name': '牛丼',
-                'price': 600,
-                'member_price': 480,
-                'welcome_flg': false,
-                'images': [],
-                'text': '味噌汁付き'
-              },
-              {
-                'id': 13,
-                'name': '中華丼',
-                'price': 600,
-                'member_price': 480,
-                'welcome_flg': false,
-                'images': [],
-                'text': '味噌汁付き'
-              }
+        },
+        {
+            "id": 2,
+            "name": "DRINK",
+            "categories": [
+                {
+                    "id": 1,
+                    "name": "Beer ビール",
+                    "menus": [
+                        {
+                            "id": 1,
+                            "name": "アサヒ生ビール(中)",
+                            "price": 400,
+                            "member_price": 320,
+                            "welcome_flg": false,
+                            "images": [
+                                {
+                                    "id": 2,
+                                    "image": "コーヒーぜりー.jpg"
+                                }
+                            ],
+                            "text": null
+                        },
+                        {
+                            "id": 2,
+                            "name": "アサヒ生ビール(グラス)",
+                            "price": 200,
+                            "member_price": 160,
+                            "welcome_flg": true,
+                            "images": [],
+                            "text": null
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "name": "Chu-Hi チューハイ",
+                    "menus": [
+                        {
+                            "id": 27,
+                            "name": "レモン酎ハイ",
+                            "price": 380,
+                            "member_price": 300,
+                            "welcome_flg": true,
+                            "images": [],
+                            "text": ""
+                        },
+                        {
+                            "id": 28,
+                            "name": "ライム酎ハイ",
+                            "price": 380,
+                            "member_price": 300,
+                            "welcome_flg": true,
+                            "images": [],
+                            "text": ""
+                        },
+                        {
+                            "id": 29,
+                            "name": "青りんご酎ハイ",
+                            "price": 380,
+                            "member_price": 300,
+                            "welcome_flg": true,
+                            "images": [],
+                            "text": ""
+                        },
+                        {
+                            "id": 30,
+                            "name": "巨峰酎ハイ",
+                            "price": 380,
+                            "member_price": 300,
+                            "welcome_flg": true,
+                            "images": [],
+                            "text": ""
+                        },
+                        {
+                            "id": 31,
+                            "name": "ウメ酎ハイ",
+                            "price": 380,
+                            "member_price": 300,
+                            "welcome_flg": true,
+                            "images": [],
+                            "text": ""
+                        },
+                        {
+                            "id": 32,
+                            "name": "シークァーサー酎ハイ",
+                            "price": 380,
+                            "member_price": 300,
+                            "welcome_flg": true,
+                            "images": [],
+                            "text": ""
+                        },
+                        {
+                            "id": 33,
+                            "name": "ゆず酎ハイ",
+                            "price": 380,
+                            "member_price": 300,
+                            "welcome_flg": true,
+                            "images": [],
+                            "text": ""
+                        },
+                        {
+                            "id": 34,
+                            "name": "プレーン酎ハイ",
+                            "price": 380,
+                            "member_price": 300,
+                            "welcome_flg": true,
+                            "images": [],
+                            "text": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "name": "Soft Drink ソフトドリンク",
+                    "menus": [
+                        {
+                            "id": 35,
+                            "name": "アイスコーヒー",
+                            "price": 180,
+                            "member_price": 140,
+                            "welcome_flg": true,
+                            "images": [],
+                            "text": ""
+                        },
+                        {
+                            "id": 36,
+                            "name": "ウーロン茶",
+                            "price": 180,
+                            "member_price": 140,
+                            "welcome_flg": true,
+                            "images": [],
+                            "text": ""
+                        },
+                        {
+                            "id": 37,
+                            "name": "オレンジジュース",
+                            "price": 180,
+                            "member_price": 140,
+                            "welcome_flg": true,
+                            "images": [],
+                            "text": ""
+                        },
+                        {
+                            "id": 38,
+                            "name": "ジンジャーエール",
+                            "price": 180,
+                            "member_price": 140,
+                            "welcome_flg": true,
+                            "images": [],
+                            "text": ""
+                        }
+                    ]
+                }
             ]
-          },
-          {
-            'id': 6,
-            'name': '炒',
-            'menus': [
-              {
-                'id': 14,
-                'name': 'チャーハン',
-                'price': 480,
-                'member_price': 380,
-                'welcome_flg': false,
-                'images': [],
-                'text': 'スープ付き'
-              },
-              {
-                'id': 15,
-                'name': '焼きそば',
-                'price': 400,
-                'member_price': 320,
-                'welcome_flg': false,
-                'images': [],
-                'text': 'スープ付き'
-              }
-            ]
-          },
-          {
-            'id': 8,
-            'name': 'Side',
-            'menus': [
-              {
-                'id': 22,
-                'name': 'フレンチトースト',
-                'price': 500,
-                'member_price': 400,
-                'welcome_flg': false,
-                'images': [],
-                'text': ''
-              },
-              {
-                'id': 23,
-                'name': 'ガーリックトースト',
-                'price': 300,
-                'member_price': 240,
-                'welcome_flg': false,
-                'images': [],
-                'text': ''
-              },
-              {
-                'id': 24,
-                'name': 'たこ焼き',
-                'price': 300,
-                'member_price': 240,
-                'welcome_flg': false,
-                'images': [],
-                'text': ''
-              },
-              {
-                'id': 25,
-                'name': 'もつ煮込み',
-                'price': 500,
-                'member_price': 400,
-                'welcome_flg': false,
-                'images': [],
-                'text': ''
-              },
-              {
-                'id': 26,
-                'name': '枝豆',
-                'price': 300,
-                'member_price': 240,
-                'welcome_flg': false,
-                'images': [],
-                'text': ''
-              }
-            ]
-          },
-          {
-            'id': 9,
-            'name': 'うどん',
-            'menus': [
-              {
-                'id': 16,
-                'name': '天ぷらうどん',
-                'price': 400,
-                'member_price': 320,
-                'welcome_flg': false,
-                'images': [],
-                'text': ''
-              },
-              {
-                'id': 17,
-                'name': '月見うどん',
-                'price': 400,
-                'member_price': 320,
-                'welcome_flg': false,
-                'images': [],
-                'text': ''
-              }
-            ]
-          },
-          {
-            'id': 10,
-            'name': 'そば',
-            'menus': [
-              {
-                'id': 18,
-                'name': '天ぷらそば',
-                'price': 400,
-                'member_price': 320,
-                'welcome_flg': false,
-                'images': [],
-                'text': ''
-              },
-              {
-                'id': 19,
-                'name': '月見そば',
-                'price': 400,
-                'member_price': 320,
-                'welcome_flg': false,
-                'images': [],
-                'text': ''
-              }
-            ]
-          },
-          {
-            'id': 11,
-            'name': 'ラーメン',
-            'menus': [
-              {
-                'id': 20,
-                'name': 'しょうゆラーメン',
-                'price': 500,
-                'member_price': 400,
-                'welcome_flg': false,
-                'images': [],
-                'text': ''
-              },
-              {
-                'id': 21,
-                'name': 'ちゃんぽん',
-                'price': 680,
-                'member_price': 540,
-                'welcome_flg': false,
-                'images': [],
-                'text': ''
-              }
-            ]
-          }
-        ]
-      },
-      {
-        'id': 2,
-        'name': 'DRINK',
-        'categories': [
-          {
-            'id': 1,
-            'name': 'Beer ビール',
-            'menus': [
-              {
-                'id': 1,
-                'name': 'アサヒ生ビール(中)',
-                'price': 400,
-                'member_price': 320,
-                'welcome_flg': false,
-                'images': [
-                  {
-                    'id': 2,
-                    'image': 'コーヒーぜりー.jpg'
-                  }
-                ],
-                'text': null
-              },
-              {
-                'id': 2,
-                'name': 'アサヒ生ビール(グラス)',
-                'price': 200,
-                'member_price': 160,
-                'welcome_flg': true,
-                'images': [],
-                'text': null
-              }
-            ]
-          },
-          {
-            'id': 2,
-            'name': 'Chu-Hi チューハイ',
-            'menus': [
-              {
-                'id': 27,
-                'name': 'レモン酎ハイ',
-                'price': 380,
-                'member_price': 300,
-                'welcome_flg': false,
-                'images': [],
-                'text': ''
-              },
-              {
-                'id': 28,
-                'name': 'ライム酎ハイ',
-                'price': 380,
-                'member_price': 300,
-                'welcome_flg': false,
-                'images': [],
-                'text': ''
-              },
-              {
-                'id': 29,
-                'name': '青りんご酎ハイ',
-                'price': 380,
-                'member_price': 300,
-                'welcome_flg': false,
-                'images': [],
-                'text': ''
-              },
-              {
-                'id': 30,
-                'name': '巨峰酎ハイ',
-                'price': 380,
-                'member_price': 300,
-                'welcome_flg': false,
-                'images': [],
-                'text': ''
-              },
-              {
-                'id': 31,
-                'name': 'ウメ酎ハイ',
-                'price': 380,
-                'member_price': 300,
-                'welcome_flg': false,
-                'images': [],
-                'text': ''
-              },
-              {
-                'id': 32,
-                'name': 'シークァーサー酎ハイ',
-                'price': 380,
-                'member_price': 300,
-                'welcome_flg': false,
-                'images': [],
-                'text': ''
-              },
-              {
-                'id': 33,
-                'name': 'ゆず酎ハイ',
-                'price': 380,
-                'member_price': 300,
-                'welcome_flg': false,
-                'images': [],
-                'text': ''
-              },
-              {
-                'id': 34,
-                'name': 'プレーン酎ハイ',
-                'price': 380,
-                'member_price': 300,
-                'welcome_flg': false,
-                'images': [],
-                'text': ''
-              }
-            ]
-          },
-          {
-            'id': 3,
-            'name': 'Soft Drink ソフトドリンク',
-            'menus': [
-              {
-                'id': 35,
-                'name': 'アイスコーヒー',
-                'price': 180,
-                'member_price': 140,
-                'welcome_flg': true,
-                'images': [],
-                'text': ''
-              },
-              {
-                'id': 36,
-                'name': 'ウーロン茶',
-                'price': 180,
-                'member_price': 140,
-                'welcome_flg': true,
-                'images': [],
-                'text': ''
-              },
-              {
-                'id': 37,
-                'name': 'オレンジジュース',
-                'price': 180,
-                'member_price': 140,
-                'welcome_flg': true,
-                'images': [],
-                'text': ''
-              },
-              {
-                'id': 38,
-                'name': 'ジンジャーエール',
-                'price': 180,
-                'member_price': 140,
-                'welcome_flg': true,
-                'images': [],
-                'text': ''
-              }
-            ]
-          }
-        ]
-      }
+        }
     ],
-    'welcome': [
-      {
-        'id': 2,
-        'name': 'アサヒ生ビール(グラス)',
-        'price': 200,
-        'member_price': 160,
-        'welcome_flg': true,
-        'images': []
-      },
-      {
-        'id': 35,
-        'name': 'アイスコーヒー',
-        'price': 180,
-        'member_price': 140,
-        'welcome_flg': true,
-        'images': []
-      },
-      {
-        'id': 36,
-        'name': 'ウーロン茶',
-        'price': 180,
-        'member_price': 140,
-        'welcome_flg': true,
-        'images': []
-      },
-      {
-        'id': 37,
-        'name': 'オレンジジュース',
-        'price': 180,
-        'member_price': 140,
-        'welcome_flg': true,
-        'images': []
-      },
-      {
-        'id': 38,
-        'name': 'ジンジャーエール',
-        'price': 180,
-        'member_price': 140,
-        'welcome_flg': true,
-        'images': []
-      }
+    "welcome": [
+        {
+            "id": 2,
+            "name": "アサヒ生ビール(グラス)",
+            "price": 200,
+            "member_price": 160,
+            "welcome_flg": true,
+            "images": []
+        },
+        {
+            "id": 27,
+            "name": "レモン酎ハイ",
+            "price": 380,
+            "member_price": 300,
+            "welcome_flg": true,
+            "images": []
+        },
+        {
+            "id": 28,
+            "name": "ライム酎ハイ",
+            "price": 380,
+            "member_price": 300,
+            "welcome_flg": true,
+            "images": []
+        },
+        {
+            "id": 29,
+            "name": "青りんご酎ハイ",
+            "price": 380,
+            "member_price": 300,
+            "welcome_flg": true,
+            "images": []
+        },
+        {
+            "id": 30,
+            "name": "巨峰酎ハイ",
+            "price": 380,
+            "member_price": 300,
+            "welcome_flg": true,
+            "images": []
+        },
+        {
+            "id": 31,
+            "name": "ウメ酎ハイ",
+            "price": 380,
+            "member_price": 300,
+            "welcome_flg": true,
+            "images": []
+        },
+        {
+            "id": 32,
+            "name": "シークァーサー酎ハイ",
+            "price": 380,
+            "member_price": 300,
+            "welcome_flg": true,
+            "images": []
+        },
+        {
+            "id": 33,
+            "name": "ゆず酎ハイ",
+            "price": 380,
+            "member_price": 300,
+            "welcome_flg": true,
+            "images": []
+        },
+        {
+            "id": 34,
+            "name": "プレーン酎ハイ",
+            "price": 380,
+            "member_price": 300,
+            "welcome_flg": true,
+            "images": []
+        },
+        {
+            "id": 35,
+            "name": "アイスコーヒー",
+            "price": 180,
+            "member_price": 140,
+            "welcome_flg": true,
+            "images": []
+        },
+        {
+            "id": 36,
+            "name": "ウーロン茶",
+            "price": 180,
+            "member_price": 140,
+            "welcome_flg": true,
+            "images": []
+        },
+        {
+            "id": 37,
+            "name": "オレンジジュース",
+            "price": 180,
+            "member_price": 140,
+            "welcome_flg": true,
+            "images": []
+        },
+        {
+            "id": 38,
+            "name": "ジンジャーエール",
+            "price": 180,
+            "member_price": 140,
+            "welcome_flg": true,
+            "images": []
+        }
     ]
-  }
+}
 
   menu.value = get_data.value.menu
   welcome.value = get_data.value.welcome
