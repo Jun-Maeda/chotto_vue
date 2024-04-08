@@ -1,10 +1,18 @@
 <script setup>
-// import { onMounted } from 'vue'
-import { ref } from 'vue'
-// import axios from 'axios'
+import { inject, onMounted, ref } from 'vue'
+import axios from 'axios'
 import router from '@/router/index.js'
+import { apiSettingStore } from '@/stores/api_setting.js'
+// injectからdayjsを呼び出す
+const dayjs = inject('dayjs')
 
-// const url = 'https://hp-api.onrender.com/api/characters'
+const api_setting_store = apiSettingStore()
+const url = api_setting_store.api_url
+const home_url = url + '/api/v1/page/home/'
+const home_infos = ref({})
+const home_events = ref({})
+const activeSlide = ref(0)
+
 // let search = ref('')
 // let headers = ref([
 //   {
@@ -18,29 +26,24 @@ import router from '@/router/index.js'
 //   { key: 'dateOfBirth', align: 'end', title: '誕生日' },
 //   { key: 'actor', align: 'end', title: '役者名' }
 // ])
-let slide_items = ref([
-  {
-    id: 1,
-    src: 'christmas.jpg'
-  },
-  {
-    id: 2,
-    src: 'joy_sound.jpg'
-  },
-  {
-    id: 3,
-    src: 'new_year.jpg'
+const slide_items = ref([])
+onMounted(async () => {
+  await axios.get(home_url).then((res) => {
+    home_infos.value = res.data.infos
+    home_events.value = res.data.events
+  })
+  for (let i = 0; i < home_events.value.length; i++) {
+    slide_items.value.push(home_events.value[i].images[0])
   }
-])
-// onMounted(() => {
-//   axios.get(url).then((res) => {
-//     characters.value = res.data
-//   })
-// })
-//
-// function clickRow(item, row) {
-//   console.log('clickRow', row.item.actor)
-// }
+})
+
+function clickRow(item, row) {
+  console.log('clickRow', row.item.actor)
+}
+
+function event_urls(images) {
+  return url + images[0].img
+}
 
 
 </script>
@@ -88,12 +91,10 @@ let slide_items = ref([
       <div class="new">
 
         <dl>
-          <dt>2023.07.14</dt>
-          <dd>tp_yado6配布開始。</dd>
-          <dt>2023.00.00</dt>
-          <dd>サンプルテキスト。サンプルテキスト。サンプルテキスト。</dd>
-          <dt>2023.00.00</dt>
-          <dd>サンプルテキスト。サンプルテキスト。サンプルテキスト。</dd>
+          <template v-for="(item,key) in home_infos" :key="key">
+            <dt>{{ dayjs(item.update_date).format('YYYY年M月DD日') }}</dt>
+            <dd class="pl-5">{{ item.title }}。</dd>
+          </template>
         </dl>
 
         <div class="r">
@@ -119,22 +120,17 @@ let slide_items = ref([
       </div>
       <div class="list-slide mb-3">
 
-        <v-carousel
-
-          height="auto"
-          hide-delimiter-background
-          show-arrows="hover"
+        <v-carousel v-model="activeSlide"
         >
-          <!--          この画像は今後djangoのAPIのURLのパスに変更とクリックしたらそのページに移動-->
           <v-carousel-item
             v-for="(item,i) in slide_items"
             :key="i"
-            :src="`src/images/${item.src}`"
-            @click="console.log(item.src)"
+            :src="url+item.img"
+            @click="console.log(event_urls(item.images))"
             max-height="700"
+            eager
           ></v-carousel-item>
         </v-carousel>
-
 
       </div>
 
@@ -146,7 +142,6 @@ let slide_items = ref([
       </div>
 
     </section>
-
 
     <section class="blurstyle">
 

@@ -16,6 +16,14 @@ import vuetify from '@/plugins/vuetify.js'
 
 import App from './App.vue'
 
+// dayjsのインポート
+import dayjs from 'dayjs'
+// ロケールのインポート
+import 'dayjs/locale/ja'
+
+// ロケール設定
+dayjs.locale('ja')
+
 
 import { createPersistedState } from 'pinia-plugin-persistedstate'
 
@@ -30,4 +38,5 @@ app.use(router)
 app.use(VueAxios, axios)
 app.use(vuetify)
 app.use(pinia)
+app.provide('dayjs', dayjs)
 app.mount('#app')
