@@ -13,7 +13,7 @@ const home_infos = ref({})
 const home_events = ref({})
 const activeSlide = ref(0)
 
-// let search = ref('')
+// let search = ref('')n
 // let headers = ref([
 //   {
 //     align: 'start',

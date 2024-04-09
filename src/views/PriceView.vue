@@ -1,5 +1,7 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed, watch } from 'vue'
+import { apiSettingStore } from '@/stores/api_setting.js'
+import axios from 'axios'
 
 const types = ref([])
 const tab = ref(1)
@@ -15,191 +17,29 @@ const price_header = ref([
   ]
 )
 
+const api_setting_store = apiSettingStore()
+const url = api_setting_store.api_url
+const room_type_url = '/api/v1/page/room_type/'
+async function getRoomDetail() {
+  await axios.get(url + room_type_url + tab.value).then((res) => {
+    services.value = res.data
+  })
+}
 
+watch(tab, async () => {
+  getRoomDetail()
+})
 function roomPage(id) {
   // ここでpiniaに保存して部屋ページへ
   console.log(id)
 }
 
 
-onMounted(() => {
-  types.value = [
-    {
-      'id': 1,
-      'name': 'スタンダード',
-      'rooms': [
-        {
-          'id': 1,
-          'name': '103'
-        },
-        {
-          'id': 2,
-          'name': '105'
-        },
-        {
-          'id': 3,
-          'name': '106'
-        }
-
-      ]
-    },
-    {
-      'id': 2,
-      'name': 'VIP',
-      'rooms': [
-        {
-          'id': 13,
-          'name': '101'
-        },
-        {
-          'id': 14,
-          'name': '102'
-        }
-      ]
-    }
-  ]
-
-  services.value = {
-    'id': 1,
-    'name': 'スタンダード',
-    'rooms': [
-      {
-        'id': 1,
-        'name': '103'
-      },
-      {
-        'id': 2,
-        'name': '105'
-      },
-      {
-        'id': 3,
-        'name': '106'
-      },
-      {
-        'id': 4,
-        'name': '107'
-      },
-      {
-        'id': 5,
-        'name': '108'
-      }
-
-    ],
-    'services': [
-      {
-        'id': 3,
-        'name': '休憩（3H）',
-        'detail': [
-          {
-            'id': 3,
-            'service_date': '全日',
-            'service_time': '6:00～24:00',
-            'priority': 0
-          }
-        ],
-        'prices': [
-          {
-            'id': 3,
-            'service_date': '月～金・祝前日',
-            'price': 5800,
-            'priority': 0
-          },
-          {
-            'id': 4,
-            'service_date': '土・日・祝日',
-            'price': 6300,
-            'priority': 1
-          }
-        ]
-      },
-      {
-        'id': 4,
-        'name': 'フリータイム1',
-        'detail': [
-          {
-            'id': 4,
-            'service_date': '全日',
-            'service_time': '6:00～17:00',
-            'priority': 0
-          }
-        ],
-        'prices': [
-          {
-            'id': 5,
-            'service_date': '月～金・祝前日',
-            'price': 6300,
-            'priority': 0
-          },
-          {
-            'id': 6,
-            'service_date': '土・日・祝日',
-            'price': 6800,
-            'priority': 1
-          }
-        ]
-      },
-      {
-        'id': 5,
-        'name': 'フリータイム2',
-        'detail': [
-          {
-            'id': 5,
-            'service_date': '全日',
-            'service_time': '13:00～19:00',
-            'priority': 0
-          }
-        ],
-        'prices': [
-          {
-            'id': 8,
-            'service_date': '月～金・祝前日',
-            'price': 6800,
-            'priority': 0
-          },
-          {
-            'id': 7,
-            'service_date': '土・日・祝日',
-            'price': 7300,
-            'priority': 1
-          }
-        ]
-      },
-      {
-        'id': 1,
-        'name': 'ご宿泊',
-        'detail': [
-          {
-            'id': 1,
-            'service_date': '日～木・祝日',
-            'service_time': '18:00～翌12:00',
-            'priority': 0
-          },
-          {
-            'id': 6,
-            'service_date': '金・土・祝前日',
-            'service_time': '19:00～翌10:00',
-            'priority': 1
-          }
-        ],
-        'prices': [
-          {
-            'id': 9,
-            'service_date': '日～木・祝日',
-            'price': 7800,
-            'priority': 0
-          },
-          {
-            'id': 10,
-            'service_date': '金・土・祝前日',
-            'price': 8400,
-            'priority': 1
-          }
-        ]
-      }
-
-
-    ]
-  }
+onMounted(async () => {
+  await axios.get(url + room_type_url).then((res) => {
+    types.value = res.data
+    getRoomDetail()
+  })
 })
 
 
