@@ -1,150 +1,26 @@
 <script setup>
-import { ref } from 'vue'
+import { inject, onMounted, ref } from 'vue'
+import { apiSettingStore } from '@/stores/api_setting.js'
+import axios from 'axios'
 
+const api_setting_store = apiSettingStore()
+const url = api_setting_store.api_url
+const facility_url = '/api/v1/page/facility/'
+const normal = ref({})
+const vip = ref({})
+const limiteds = ref({})
+const activeSlide = ref(0)
+const vipActiveSlide = ref(0)
 
-let default_service = ref([
-  {
-    title: 'VOD'
-  },
-  {
-    title: 'ブルーレイ'
-  },
-  {
-    title: 'ブロアーバス'
-  },
-  {
-    title: '浴室TV'
-  },
-  {
-    title: '水中照明'
-  },
-  {
-    title: 'ドライヤー'
-  },
-  {
-    title: 'ファブリックスプレー'
-  },
-  {
-    title: 'スキンケア'
-  },
-  {
-    title: 'シャンプー・コンディショナー'
-  }
-])
+onMounted(async () => {
+  await axios.get(url + facility_url).then((res) => {
+    let result_data = res.data
+    normal.value = result_data.normal
+    vip.value = result_data.vip
+    limiteds.value = result_data.limited_facilities
+  })
+})
 
-let default_slide_items = ref([
-  {
-    id: 1,
-    src: 'sample_service1.jpg'
-  },
-  {
-    id: 2,
-    src: 'sample_service1.jpg'
-  },
-  {
-    id: 3,
-    src: 'sample_service1.jpg'
-  }
-])
-let vip_service = ref([
-  {
-    title: '高級サロン仕様のインバスアイテム'
-  },
-  {
-    title: '大風量ドライヤー'
-  },
-  {
-    title: 'ウォーターサーバー'
-  },
-  {
-    title: '加湿機能付き空気清浄機'
-  }
-])
-let vip_slide_items = ref([
-  {
-    id: 1,
-    src: 'sample_service1.jpg'
-  },
-  {
-    id: 2,
-    src: 'sample_service1.jpg'
-  },
-  {
-    id: 3,
-    src: 'sample_service1.jpg'
-  }
-])
-let vip_rooms = ref([
-  {
-    'id': 13,
-    'name': '101'
-  },
-  {
-    'id': 14,
-    'name': '102'
-  },
-  {
-    'id': 15,
-    'name': '112'
-  },
-  {
-    'id': 16,
-    'name': '113'
-  }
-])
-let limiteds = ref([
-  {
-    'id': 1,
-    'name': 'カラオケ',
-    'img': 'sample_service1.jpg',
-    'rooms': [
-      {
-        'id': 14,
-        'name': '102'
-      },
-      {
-        'id': 15,
-        'name': '112'
-      }
-    ]
-  },
-  {
-    'id': 2,
-    'name': '100インチプロジェクター',
-    'img': 'sample_service1.jpg',
-    'rooms': [
-      {
-        'id': 14,
-        'name': '102'
-      },
-      {
-        'id': 15,
-        'name': '112'
-      }
-    ]
-  },
-  {
-    'id': 3,
-    'name': 'ダイエットトレーナーコア',
-    'img': 'sample_service1.jpg',
-    'rooms': [
-      {
-        'id': 14,
-        'name': '102'
-      },
-      {
-        'id': 15,
-        'name': '112'
-      }
-    ]
-  }
-])
-
-// function clickItem(item, row) {
-//   router.push({
-//     name: 'info_detail'
-//   })
-// }
 
 function roomPage(id) {
   // ここでpiniaに保存して部屋ページへ
@@ -173,22 +49,29 @@ function roomPage(id) {
     <v-row>
       <v-col cols="12" sm="6" order-sm="1" class="mt-sm-10">
         <v-carousel
+          v-model="activeSlide"
           cycle
           height="auto"
           hide-delimiter-background
           show-arrows="hover"
         >
           <v-carousel-item
-            v-for="(item,i) in default_slide_items"
+            v-for="(item,i) in normal.imgs"
             :key="i"
-            :src="`src/images/${item.src}`"
+            :src="url+item"
           ></v-carousel-item>
         </v-carousel>
       </v-col>
 
       <v-col cols="12" sm="6" order-sm="-1" class="mt-sm-10">
-        <v-list lines="one" :items="default_service" bg-color="rgba(255,255,255,0.1)" base-color="white"
-        />
+        <v-list lines="one" bg-color="rgba(255,255,255,0.1)" base-color="white"
+        >
+          <v-list-item
+            v-for="normal in normal.facilities"
+            :key="normal"
+            :title="normal.name"
+          />
+        </v-list>
       </v-col>
 
     </v-row>
@@ -209,25 +92,32 @@ function roomPage(id) {
     <v-row>
       <v-col cols="12" sm="6" class="mt-sm-10">
         <v-carousel
+          v-model="vipActiveSlide"
           cycle
           height="auto"
           hide-delimiter-background
           show-arrows="hover"
         >
           <v-carousel-item
-            v-for="(item,i) in vip_slide_items"
+            v-for="(item,i) in vip.imgs"
             :key="i"
-            :src="`src/images/${item.src}`"
+            :src="url+item"
           ></v-carousel-item>
         </v-carousel>
       </v-col>
 
       <v-col cols="12" sm="6" class="mt-sm-10">
-        <v-list lines="one" :items="vip_service" bg-color="rgba(255,255,255,0.1)" base-color="white"
-        />
+        <v-list lines="one" bg-color="rgba(255,255,255,0.1)" base-color="white"
+        >
+          <v-list-item
+            v-for="vip in vip.facilities"
+            :key="vip"
+            :title="vip.name"
+          />
+        </v-list>
         <v-card title="対象のお部屋" class="mt-5 mx-2" variant="outlined">
           <template v-slot:text>
-            <v-chip class="ma-1" v-for="(vip_room, key) in vip_rooms" :key="key" :ripple="false" link variant="outlined"
+            <v-chip class="ma-1" v-for="(vip_room, key) in vip.rooms" :key="key" :ripple="false" link variant="outlined"
                     @click="roomPage(vip_room.id)">
               {{ vip_room.name }}
             </v-chip>
@@ -245,17 +135,10 @@ function roomPage(id) {
     <h2 class="ma-3">限定設備</h2>
     <small
       class="ma-3">一部のお部屋限定の設備です。</small>
-    <!--    <div class="list">-->
-    <!--      <figure><img src="@/images/sample_service1.jpg" alt=""></figure>-->
-    <!--      <div>-->
-    <!--        <h4>タイトルを入れます</h4>-->
-    <!--        <p>-->
-    <!--          説明を入れます。サンプルテキスト。説明を入れます。サンプルテキスト。説明を入れます。サンプルテキスト。説明を入れます。サンプルテキスト。</p>-->
-    <!--      </div>-->
-    <!--    </div>-->
+
 
     <div class="list" v-for="(limited, key) in limiteds" :key="key">
-      <figure><img :src="`src/images/${limited.img}`" alt=""></figure>
+      <figure><img :src="url+limited.img" alt=""></figure>
       <div>
         <h4>{{ limited.name }}</h4>
         <p>
@@ -308,7 +191,8 @@ function roomPage(id) {
       <figure><img src="@/images/rental.jpg" alt=""></figure>
       <div>
         <h4>無料貸し出し</h4>
-        <p>人気のシャンプー、コンディショナー、ボディソープ、充電ケーブル、ドライヤー、ヘアアイロンなど豊富な種類で御用意しております。</p>
+        <p>
+          人気のシャンプー、コンディショナー、ボディソープ、充電ケーブル、ドライヤー、ヘアアイロンなど豊富な種類で御用意しております。</p>
       </div>
     </div>
     <div class="list">
@@ -329,161 +213,3 @@ function roomPage(id) {
 
 </template>
 
-<!--<script>-->
-<!--export default {-->
-<!--  data: () => ({-->
-<!--    headers: [-->
-<!--      { title: 'タイトル', align: 'start', width: '50%', key: 'title' },-->
-<!--      { title: '更新', align: 'end', width: '50%', key: 'update_date' }-->
-<!--    ],-->
-<!--    default_service: [-->
-<!--      {-->
-<!--        title: 'VOD'-->
-<!--      },-->
-<!--      {-->
-<!--        title: 'ブルーレイ'-->
-<!--      },-->
-<!--      {-->
-<!--        title: 'ブロアーバス'-->
-<!--      },-->
-<!--      {-->
-<!--        title: '浴室TV'-->
-<!--      },-->
-<!--      {-->
-<!--        title: '水中照明'-->
-<!--      },-->
-<!--      {-->
-<!--        title: 'ドライヤー'-->
-<!--      },-->
-<!--      {-->
-<!--        title: 'ファブリックスプレー'-->
-<!--      },-->
-<!--      {-->
-<!--        title: 'スキンケア'-->
-<!--      },-->
-<!--      {-->
-<!--        title: 'シャンプー・コンディショナー'-->
-<!--      }-->
-<!--    ],-->
-<!--    default_slide_items: [-->
-<!--      {-->
-<!--        id: 1,-->
-<!--        src: 'sample_service1.jpg'-->
-<!--      },-->
-<!--      {-->
-<!--        id: 2,-->
-<!--        src: 'sample_service1.jpg'-->
-<!--      },-->
-<!--      {-->
-<!--        id: 3,-->
-<!--        src: 'sample_service1.jpg'-->
-<!--      }-->
-<!--    ],-->
-<!--    vip_service: [-->
-<!--      {-->
-<!--        title: '高級サロン仕様のインバスアイテム'-->
-<!--      },-->
-<!--      {-->
-<!--        title: '大風量ドライヤー'-->
-<!--      },-->
-<!--      {-->
-<!--        title: 'ウォーターサーバー'-->
-<!--      },-->
-<!--      {-->
-<!--        title: '加湿機能付き空気清浄機'-->
-<!--      }-->
-<!--    ],-->
-<!--    vip_slide_items: [-->
-<!--      {-->
-<!--        id: 1,-->
-<!--        src: 'sample_service1.jpg'-->
-<!--      },-->
-<!--      {-->
-<!--        id: 2,-->
-<!--        src: 'sample_service1.jpg'-->
-<!--      },-->
-<!--      {-->
-<!--        id: 3,-->
-<!--        src: 'sample_service1.jpg'-->
-<!--      }-->
-<!--    ],-->
-<!--    vip_rooms: [-->
-<!--      {-->
-<!--        'id': 13,-->
-<!--        'name': '101'-->
-<!--      },-->
-<!--      {-->
-<!--        'id': 14,-->
-<!--        'name': '102'-->
-<!--      },-->
-<!--      {-->
-<!--        'id': 15,-->
-<!--        'name': '112'-->
-<!--      },-->
-<!--      {-->
-<!--        'id': 16,-->
-<!--        'name': '113'-->
-<!--      }-->
-<!--    ],-->
-<!--    limiteds: [-->
-<!--      {-->
-<!--        'id': 1,-->
-<!--        'name': 'カラオケ',-->
-<!--        'img': 'sample_service1.jpg',-->
-<!--        'rooms': [-->
-<!--          {-->
-<!--            'id': 14,-->
-<!--            'name': '102'-->
-<!--          },-->
-<!--          {-->
-<!--            'id': 15,-->
-<!--            'name': '112'-->
-<!--          }-->
-<!--        ]-->
-<!--      },-->
-<!--      {-->
-<!--        'id': 2,-->
-<!--        'name': '100インチプロジェクター',-->
-<!--        'img': 'sample_service1.jpg',-->
-<!--        'rooms': [-->
-<!--          {-->
-<!--            'id': 14,-->
-<!--            'name': '102'-->
-<!--          },-->
-<!--          {-->
-<!--            'id': 15,-->
-<!--            'name': '112'-->
-<!--          }-->
-<!--        ]-->
-<!--      },-->
-<!--      {-->
-<!--        'id': 3,-->
-<!--        'name': 'ダイエットトレーナーコア',-->
-<!--        'img': 'sample_service1.jpg',-->
-<!--        'rooms': [-->
-<!--          {-->
-<!--            'id': 14,-->
-<!--            'name': '102'-->
-<!--          },-->
-<!--          {-->
-<!--            'id': 15,-->
-<!--            'name': '112'-->
-<!--          }-->
-<!--        ]-->
-<!--      }-->
-<!--    ]-->
-
-<!--  }),-->
-<!--  methods: {-->
-<!--    clickItem(item, row) {-->
-<!--      this.$router.push({-->
-<!--        name: 'info_detail'-->
-<!--      })-->
-<!--    },-->
-<!--    roomPage(id) {-->
-<!--      // ここでpiniaに保存して部屋ページへ-->
-<!--      console.log(id)-->
-<!--    }-->
-<!--  }-->
-<!--}-->
-<!--</script>-->
