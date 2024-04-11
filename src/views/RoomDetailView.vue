@@ -1,9 +1,17 @@
 <script setup>
 import { roomDetailStore } from '@/stores/room_detail.js'
-import { onMounted, onBeforeMount } from 'vue'
+import { onMounted, onBeforeMount, computed } from 'vue'
 import { ref } from 'vue'
+import axios from 'axios'
+import { apiSettingStore } from '@/stores/api_setting.js'
 
-let room_detail = ref({})
+
+const api_setting_store = apiSettingStore()
+const url = api_setting_store.api_url
+const room_url = url + '/api/v1/page/room/'
+const room_type_url = '/api/v1/page/room_type/'
+
+const room_detail = ref({})
 const room_detail_store = ref(roomDetailStore())
 let images = ref(['./src/images/room_1.jpg', './src/images/room_2.jpg', './src/images/bath.jpg'])
 const price_tab = ref('detail')
@@ -18,7 +26,7 @@ const price_header = ref([
 )
 const services = ref([])
 
-onBeforeMount(() => {
+onBeforeMount(async() => {
   // if (room_detail_store.value.room_data === null) {
   //     alert('エラー')
   //     // ホームへリダイレクト
@@ -28,220 +36,14 @@ onBeforeMount(() => {
   //   } else {
   //     room_detail.value = room_detail_store.value.room_data
   //   }
-  console.log('ok')
-  room_detail.value = {
-    'id': 13,
-    'name': '101',
-    'type': {
-      'id': 2,
-      'name': 'VIP'
-    },
-    'images': [],
-    'facilities': {
-      'limited': [
-        {
-          'id': 7,
-          'name': 'ダイエットトレーナーコア'
-        },
-        {
-          'id': 18,
-          'name': '75インチ大型TV'
-        }
-      ],
-      'vip': [
-        {
-          'id': 1,
-          'name': '高級サロン仕様のインバスアイテム'
-        },
-        {
-          'id': 2,
-          'name': '大風量ドライヤー'
-        },
-        {
-          'id': 3,
-          'name': 'ウォーターサーバー'
-        },
-        {
-          'id': 4,
-          'name': '加湿機能付き空気清浄機'
-        }
-      ],
-      'normal': [
-        {
-          'id': 8,
-          'name': 'VOD'
-        },
-        {
-          'id': 9,
-          'name': 'ブルーレイ'
-        },
-        {
-          'id': 10,
-          'name': 'ブロアーバス'
-        },
-        {
-          'id': 12,
-          'name': '浴室TV'
-        },
-        {
-          'id': 13,
-          'name': 'ドライヤー'
-        },
-        {
-          'id': 14,
-          'name': 'ファブリックスプレー'
-        },
-        {
-          'id': 15,
-          'name': 'スキンケア'
-        },
-        {
-          'id': 16,
-          'name': 'シャンプー・コンディショナー'
-        }
-      ]
-    }
-  }
+  await axios.get(room_url+room_detail_store.value.room_data).then((res) => {
+    room_detail.value = res.data
+  })
+  await axios.get(room_type_url+room_detail.value.type.id).then((res) => {
+    services.value = res.data
+  })
 
-  services.value = {
-    'id': 1,
-    'name': 'スタンダード',
-    'rooms': [
-      {
-        'id': 1,
-        'name': '103'
-      },
-      {
-        'id': 2,
-        'name': '105'
-      },
-      {
-        'id': 3,
-        'name': '106'
-      },
-      {
-        'id': 4,
-        'name': '107'
-      },
-      {
-        'id': 5,
-        'name': '108'
-      }
 
-    ],
-    'services': [
-      {
-        'id': 3,
-        'name': '休憩（3H）',
-        'detail': [
-          {
-            'id': 3,
-            'service_date': '全日',
-            'service_time': '6:00～24:00',
-            'priority': 0
-          }
-        ],
-        'prices': [
-          {
-            'id': 3,
-            'service_date': '月～金・祝前日',
-            'price': 5800,
-            'priority': 0
-          },
-          {
-            'id': 4,
-            'service_date': '土・日・祝日',
-            'price': 6300,
-            'priority': 1
-          }
-        ]
-      },
-      {
-        'id': 4,
-        'name': 'フリータイム1',
-        'detail': [
-          {
-            'id': 4,
-            'service_date': '全日',
-            'service_time': '6:00～17:00',
-            'priority': 0
-          }
-        ],
-        'prices': [
-          {
-            'id': 5,
-            'service_date': '月～金・祝前日',
-            'price': 6300,
-            'priority': 0
-          },
-          {
-            'id': 6,
-            'service_date': '土・日・祝日',
-            'price': 6800,
-            'priority': 1
-          }
-        ]
-      },
-      {
-        'id': 5,
-        'name': 'フリータイム2',
-        'detail': [
-          {
-            'id': 5,
-            'service_date': '全日',
-            'service_time': '13:00～19:00',
-            'priority': 0
-          }
-        ],
-        'prices': [
-          {
-            'id': 8,
-            'service_date': '月～金・祝前日',
-            'price': 6800,
-            'priority': 0
-          },
-          {
-            'id': 7,
-            'service_date': '土・日・祝日',
-            'price': 7300,
-            'priority': 1
-          }
-        ]
-      },
-      {
-        'id': 1,
-        'name': 'ご宿泊',
-        'detail': [
-          {
-            'id': 1,
-            'service_date': '日～木・祝日',
-            'service_time': '18:00～翌12:00',
-            'priority': 0
-          },
-          {
-            'id': 6,
-            'service_date': '金・土・祝前日',
-            'service_time': '19:00～翌10:00',
-            'priority': 1
-          }
-        ],
-        'prices': [
-          {
-            'id': 9,
-            'service_date': '日～木・祝日',
-            'price': 7800,
-            'priority': 0
-          },
-          {
-            'id': 10,
-            'service_date': '金・土・祝前日',
-            'price': 8400,
-            'priority': 1
-          }
-        ]
-      }
-    ]
-  }
 })
 
 </script>
