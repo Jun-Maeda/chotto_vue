@@ -58,7 +58,7 @@ onMounted(async () => {
           >
             <v-row class="mt-5">
               <v-col cols="12" sm="6" v-for="room in room_list" :key="room" class="list">
-                <figure><a @click="roomLink(room.id)"><img src="@/images/room_1.jpg" alt=""></a></figure>
+                <figure><a @click="roomLink(room.id)"><img src="@/images/room_1.jpg" class="h-auto w-100" alt=""></a></figure>
                 <div>
                   <h4><a @click="roomLink(room.id)">{{ room.name }}</a></h4>
                   <p>
