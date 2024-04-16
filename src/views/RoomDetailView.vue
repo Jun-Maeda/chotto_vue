@@ -77,9 +77,9 @@ onBeforeMount(async() => {
           class="mt-0 pt-0"
         >
           <v-carousel-item
-            v-for="(item,i) in images"
+            v-for="(item,i) in room_detail.images"
             :key="i"
-            :src="item"
+            :src="url + item"
           ></v-carousel-item>
         </v-carousel>
       </v-col>

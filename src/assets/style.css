@@ -544,8 +544,10 @@ footer a {
 
 /*ボックス内のfigure画像*/
 .list figure {
-    width: 50%; /*画像の幅*/
+    width: 40%; /*画像の幅*/
     margin-right: 20px; /*画像の右側に空けるスペース*/
+    margin-top:auto;
+    margin-bottom: auto;
 }
 
 /*ボックス内のh4タグ*/
