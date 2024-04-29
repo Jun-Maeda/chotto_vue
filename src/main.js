@@ -5,7 +5,6 @@ import './assets/animation.css'
 import './assets/base.css'
 
 
-
 import { createApp } from 'vue'
 // import router from './router'
 import router from '@/router/index.js'
@@ -26,7 +25,17 @@ dayjs.locale('ja')
 
 
 import { createPersistedState } from 'pinia-plugin-persistedstate'
+import Amplify from 'aws-amplify'
+import aws_exports from './aws-exports'
+import {
+  applyPolyfills,
+  defineCustomElements
+} from '@aws-amplify/ui-components/loader'
 
+Amplify.configure(aws_exports)
+applyPolyfills().then(() => {
+  defineCustomElements(window)
+})
 const app = createApp(App)
 
 // pinia
