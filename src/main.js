@@ -15,8 +15,12 @@ import { createPinia } from 'pinia'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import vuetify from '@/plugins/vuetify.js'
-
 import App from './App.vue'
+
+import { Amplify } from 'aws-amplify'
+import awsExports from './aws-exports'
+
+Amplify.configure(awsExports)
 
 // dayjsのインポート
 import dayjs from 'dayjs'

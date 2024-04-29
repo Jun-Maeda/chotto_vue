@@ -12,6 +12,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@aws-amplify/ui-vue": "^4.2.5",
     "aws-amplify": "^6.1.4",
     "axios": "^1.6.6",
     "dayjs": "^1.11.10",
