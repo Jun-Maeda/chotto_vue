@@ -3,7 +3,9 @@ import './assets/style.css'
 import './assets/slide.css'
 import './assets/animation.css'
 import './assets/base.css'
-
+import './assets/js/main.js'
+import './assets/js/slick.js'
+import './assets/js/jquery.inview_set.js'
 
 
 import { createApp } from 'vue'
