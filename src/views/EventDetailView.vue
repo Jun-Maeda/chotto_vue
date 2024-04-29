@@ -67,6 +67,7 @@ onMounted(async () => {
         </v-carousel>
       </v-col>
     </v-row>
+    <p class="c"><a href="javascript:history.back()">&lt;&lt; 前のページに戻る</a></p>
 
   </section>
 

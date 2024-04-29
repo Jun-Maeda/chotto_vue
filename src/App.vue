@@ -47,10 +47,10 @@ function clickMenu() {
         <li><a @click="router.push('entry_room'); clickMenu()" class="cursor-pointer">空室情報</a></li>
         <li><a @click="router.push('room_list'); clickMenu()" class="cursor-pointer">お部屋</a></li>
         <li><a @click="router.push('price'); clickMenu()" class="cursor-pointer">料金</a></li>
-        <li><a @click="router.push('services'); clickMenu()">サービス・設備</a></li>
-        <li><a @click="router.push('menu'); clickMenu()">メニュー</a></li>
-        <li><a @click="router.push('member'); clickMenu()">メンバー特典</a></li>
-        <li><a @click="router.push('access'); clickMenu()">アクセス</a></li>
+        <li><a @click="router.push('services'); clickMenu()" class="cursor-pointer">サービス・設備</a></li>
+        <li><a @click="router.push('menu'); clickMenu()" class="cursor-pointer">メニュー</a></li>
+        <li><a @click="router.push('member'); clickMenu()" class="cursor-pointer">メンバー特典</a></li>
+        <li><a @click="router.push('access'); clickMenu()" class="cursor-pointer">アクセス</a></li>
       </ul>
     </nav>
 

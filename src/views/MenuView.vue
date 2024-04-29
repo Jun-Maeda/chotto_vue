@@ -101,13 +101,11 @@ onMounted(async() => {
                                   <v-img
                                     v-if="item.raw.images[0]"
                                     :src="url+item.raw.images[0].image"
-                                    height="250"
                                     cover
                                   ></v-img>
                                   <v-img
                                     v-if="!item.raw.images[0]"
                                     src="src/images/no_image.jpg"
-                                    height="250"
                                     cover
                                   ></v-img>
 

@@ -3,8 +3,11 @@ import { inject, onMounted, ref } from 'vue'
 import axios from 'axios'
 import router from '@/router/index.js'
 import { apiSettingStore } from '@/stores/api_setting.js'
+import { infoDetailStore } from '@/stores/info_detail.js'
+import { eventDetailStore } from '@/stores/event_detail.js'
 // injectからdayjsを呼び出す
 const dayjs = inject('dayjs')
+const event_store = ref(eventDetailStore())
 
 const api_setting_store = apiSettingStore()
 const url = api_setting_store.api_url
@@ -13,32 +16,35 @@ const home_infos = ref({})
 const home_events = ref({})
 const activeSlide = ref(0)
 
-// let search = ref('')n
-// let headers = ref([
-//   {
-//     align: 'start',
-//     key: 'id',
-//     title: 'ID'
-//   },
-//   { key: 'name', align: 'end', title: '名前' },
-//   { key: 'gender', align: 'end', title: '性別' },
-//   { key: 'house', align: 'end', title: '寮' },
-//   { key: 'dateOfBirth', align: 'end', title: '誕生日' },
-//   { key: 'actor', align: 'end', title: '役者名' }
-// ])
 const slide_items = ref([])
+const info_store = ref(infoDetailStore())
+
 onMounted(async () => {
   await axios.get(home_url).then((res) => {
     home_infos.value = res.data.infos
     home_events.value = res.data.events
   })
   for (let i = 0; i < home_events.value.length; i++) {
-    slide_items.value.push(home_events.value[i].images[0])
+    let data = {
+      'id': home_events.value[i].id,
+      'image': home_events.value[i].images[0]
+    }
+    slide_items.value.push(data)
   }
 })
 
-function clickRow(item, row) {
-  console.log('clickRow', row.item.actor)
+function clickInfo(item) {
+  info_store.value.info_data = item
+  router.push({
+    name: 'info_detail'
+  })
+}
+
+function clickEvent(item) {
+  event_store.value.event_data = item
+  router.push({
+    name: 'event_detail'
+  })
 }
 
 function event_urls(images) {
@@ -92,8 +98,9 @@ function event_urls(images) {
 
         <dl>
           <template v-for="(item,key) in home_infos" :key="key">
-            <dt>{{ dayjs(item.update_date).format('YYYY年M月DD日') }}</dt>
-            <dd class="pl-5">{{ item.title }}。</dd>
+            <dt @click="clickInfo(item)" class="cursor-pointer">{{ dayjs(item.update_date).format('YYYY年M月DD日') }}
+            </dt>
+            <dd @click="clickInfo(item)" class="pl-5 cursor-pointer">{{ item.title }}。</dd>
           </template>
         </dl>
 
@@ -125,8 +132,8 @@ function event_urls(images) {
           <v-carousel-item
             v-for="(item,i) in slide_items"
             :key="i"
-            :src="url+item.img"
-            @click="console.log(event_urls(item.images))"
+            :src="url+item.image.img"
+            @click="clickEvent(item)"
             max-height="700"
             eager
           ></v-carousel-item>
@@ -158,6 +165,7 @@ function event_urls(images) {
           <a @click="router.push('/access')" class="animation-btn-inner">詳細はこちら</a>
         </p>
       </div>
+
 
     </section>
   </main>

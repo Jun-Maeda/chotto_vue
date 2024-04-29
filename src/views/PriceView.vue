@@ -2,6 +2,8 @@
 import { ref, onMounted, computed, watch } from 'vue'
 import { apiSettingStore } from '@/stores/api_setting.js'
 import axios from 'axios'
+import { roomDetailStore } from '@/stores/room_detail.js'
+import router from '@/router/index.js'
 
 const types = ref([])
 const tab = ref(1)
@@ -29,9 +31,13 @@ async function getRoomDetail() {
 watch(tab, async () => {
   getRoomDetail()
 })
-function roomPage(id) {
-  // ここでpiniaに保存して部屋ページへ
-  console.log(id)
+function roomLink(id) {
+  let room_store = roomDetailStore()
+  room_store.room_data = id
+  router.push({
+    name: 'room'
+  })
+
 }
 
 
@@ -130,7 +136,7 @@ onMounted(async () => {
                     <template v-slot:text>
                       <v-chip class="ma-1" v-for="(room, key) in services.rooms" :key="key" :ripple="false" link
                               variant="outlined"
-                              @click="roomPage(room.id)">
+                              @click="roomLink(room.id)">
                         {{ room.name }}
                       </v-chip>
                     </template>

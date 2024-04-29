@@ -1,5 +1,7 @@
 <script setup>
 import { inject, onMounted, ref } from 'vue'
+import { roomDetailStore } from '@/stores/room_detail.js'
+import router from '@/router/index.js'
 import { apiSettingStore } from '@/stores/api_setting.js'
 import axios from 'axios'
 
@@ -22,9 +24,13 @@ onMounted(async () => {
 })
 
 
-function roomPage(id) {
-  // ここでpiniaに保存して部屋ページへ
-  console.log(id)
+function roomLink(id) {
+  let room_store = roomDetailStore()
+  room_store.room_data = id
+  router.push({
+    name: 'room'
+  })
+
 }
 
 </script>
@@ -118,7 +124,7 @@ function roomPage(id) {
         <v-card title="対象のお部屋" class="mt-5 mx-2" variant="outlined">
           <template v-slot:text>
             <v-chip class="ma-1" v-for="(vip_room, key) in vip.rooms" :key="key" :ripple="false" link variant="outlined"
-                    @click="roomPage(vip_room.id)">
+                    @click="roomLink(vip_room.id)">
               {{ vip_room.name }}
             </v-chip>
           </template>
@@ -143,7 +149,7 @@ function roomPage(id) {
         <h4>{{ limited.name }}</h4>
         <p>
           <v-chip class="ma-1" v-for="(room, key) in limited.rooms" :key="key" :ripple="false" link variant="outlined"
-                  @click="roomPage(room.id)">
+                  @click="roomLink(room.id)">
             {{ room.name }}
           </v-chip>
         </p>
@@ -202,7 +208,7 @@ function roomPage(id) {
         <p>
           お食事から、ちょっとしたおつまみをご用意しております。ご気分に合わせてお好きなメニューをお楽しみくださいませ。</p>
         <v-row justify="end" style="max-width: 700px">
-          <v-btn density="compact" variant="text">お食事詳細→</v-btn>
+          <v-btn @click="router.push('menu')" density="compact" variant="text">お食事詳細→</v-btn>
         </v-row>
 
       </div>
