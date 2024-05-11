@@ -76,7 +76,7 @@ function clickItem(item, row) {
               ></v-img>
               <v-img
                 v-if="checkImg(item.images) === false"
-                src="src/images/no_image.jpg"
+                src="./src/images/no_image.jpg"
                 height="100"
                 cover
               ></v-img>

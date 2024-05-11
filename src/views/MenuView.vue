@@ -32,7 +32,7 @@ function get_category(menus) {
   return menus.id === tab.value
 }
 
-onMounted(async() => {
+onMounted(async () => {
   await axios.get(menu_url).then((res) => {
     get_data.value = res.data
   })
@@ -78,45 +78,46 @@ onMounted(async() => {
                 <v-col cols="12"
                 >
                   <v-expansion-panels class="my-4" variant="popout">
-                    <v-expansion-panel v-for="category in categories" :key="category.id"
+                    <v-expansion-panel v-for="category in categories" :key="category"
                     >
                       <v-expansion-panel-title expand-icon="mdi-menu-down">
                         {{ category.name }}
                       </v-expansion-panel-title>
                       <v-expansion-panel-text>
-
                         <v-data-iterator
                           :items="category.menus"
                         >
                           <template v-slot:default="{ items }">
+<!--                            {{ items }}-->
+<!--                            <p v-for="menu in category.menus" :key="item">{{ menu }}</p>-->
                             <v-row>
                               <v-col
-                                v-for="(item, i) in items"
+                                v-for="(item, i) in category.menus"
                                 :key="i"
                                 cols="12"
-                                sm="6"
+                                sm="4"
                                 xl="3"
                               >
                                 <v-sheet border>
                                   <v-img
-                                    v-if="item.raw.images[0]"
-                                    :src="url+item.raw.images[0].image"
+                                    v-if="item.images[0]"
+                                    :src="url+item.images[0].image"
                                     cover
                                   ></v-img>
                                   <v-img
-                                    v-if="!item.raw.images[0]"
-                                    src="src/images/no_image.jpg"
+                                    v-if="!item.images[0]"
+                                    src="./src/images/no_image.jpg"
                                     cover
                                   ></v-img>
 
                                   <v-list-item
-                                    :title="item.raw.name"
+                                    :title="item.name"
                                     density="comfortable"
                                     lines="two"
                                   >
                                     <template v-slot:title>
                                       <strong class="text-h6">
-                                        {{ item.raw.name }}
+                                        {{ item.name }}
                                       </strong>
                                     </template>
                                   </v-list-item>
@@ -126,19 +127,19 @@ onMounted(async() => {
                                     <tr align="right">
                                       <th>通常価格:</th>
 
-                                      <td>{{ item.raw.price }}円</td>
+                                      <td>{{ item.price }}円</td>
                                     </tr>
 
                                     <tr align="right">
                                       <th>会員価格:</th>
 
-                                      <td>{{ item.raw.member_price }}円</td>
+                                      <td>{{ item.member_price }}円</td>
                                     </tr>
 
                                     <tr align="right">
                                       <th>備考:</th>
 
-                                      <td>{{ item.raw.text }}</td>
+                                      <td>{{ item.text }}</td>
                                     </tr>
                                     </tbody>
                                   </v-table>
