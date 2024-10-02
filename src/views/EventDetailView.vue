@@ -49,15 +49,14 @@ onMounted(async () => {
     <v-row justify="center">
       <v-col cols="12" sm="10" class="mb-5">
         <h2 class="ma-3"> {{ event_detail.title }}</h2>
-        <v-row justify="end">{{ dayjs(event_detail.update_date).format('YYYY年M月DD日') }}</v-row>
-
-        <div class="mt-5">{{ event_detail.detail }}</div>
+        <v-row justify="end" class="mr-3">{{ dayjs(event_detail.update_date).format('YYYY年M月DD日') }}</v-row>
         <v-carousel
           v-model="activeSlide"
           v-show="carousel_is"
           cycle
           hide-delimiter-background
           show-arrows="hover"
+          class="mt-5"
         >
           <v-carousel-item
             v-for="(item,i) in event_detail.images"
@@ -65,6 +64,8 @@ onMounted(async () => {
             :src="url+item.img"
           ></v-carousel-item>
         </v-carousel>
+        <div class="mt-5 mx-3" style="white-space: pre">{{ event_detail.detail }}</div>
+
       </v-col>
     </v-row>
     <p class="c"><a href="javascript:history.back()">&lt;&lt; 前のページに戻る</a></p>

@@ -25,7 +25,7 @@ onMounted(async () => {
     await axios.get(url + info_url + info_detail_store.value.info_data.id).then((res) => {
       info_detail.value = res.data
     })
-    if (info_detail.value.images.length > 0){
+    if (info_detail.value.images.length > 0) {
       carousel_is.value = true
     }
   }
@@ -51,9 +51,7 @@ onMounted(async () => {
     <v-row justify="center">
       <v-col cols="12" sm="10" class="mb-5">
         <h2> {{ info_detail.title }}</h2>
-        <v-row justify="end">{{ dayjs(info_detail.update_date).format('YYYY年M月DD日') }}</v-row>
-
-        <div class="mt-5">{{ info_detail.detail }}</div>
+        <v-row justify="end" class="mr-3">{{ dayjs(info_detail.update_date).format('YYYY年M月DD日') }}</v-row>
         <v-carousel
           v-model="activeSlide"
           v-show="carousel_is"
@@ -67,6 +65,8 @@ onMounted(async () => {
             :src="url+item.img"
           ></v-carousel-item>
         </v-carousel>
+        <div class="mt-5 mx-3" style="white-space: pre">{{ info_detail.detail }}</div>
+
       </v-col>
     </v-row>
     <p class="c"><a href="javascript:history.back()">&lt;&lt; 前のページに戻る</a></p>
