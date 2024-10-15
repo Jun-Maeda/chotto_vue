@@ -55,10 +55,10 @@ function clickMenu() {
     </nav>
 
     <ul class="icons">
-      <li><a href=""><i class="bi bi-facebook"></i></a></li>
-      <li><a href=""><i class="bi bi-twitter"></i></a></li>
-      <li><a href=""><i class="bi bi-youtube"></i></a></li>
-      <li><a href=""><i class="bi bi-instagram"></i></a></li>
+      <li><a href="https://www.tiktok.com/@chottomisato?is_from_webapp=1&sender_device=pc" target="_blank"><i class="bi bi-tiktok"></i></a></li>
+      <li><a href="https://x.com/ChottoMisato" target="_blank"><i class="bi" style="font-weight: bold">𝕏</i></a></li>
+<!--      <li><a href=""><i class="bi bi-youtube"></i></a></li>-->
+      <li><a href="https://www.instagram.com/chottomisato/" target="_blank"><i class="bi bi-instagram"></i></a></li>
     </ul>
 
   </div>
