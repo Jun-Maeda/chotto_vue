@@ -70,6 +70,11 @@ const router = createRouter({
       path: '/menu',
       name: 'menu',
       component: () => import('../views/MenuView.vue')
+    },
+    {
+      path: '/surprise',
+      name: 'surprise',
+      component: () => import('../views/SurpriseView.vue')
     }
   ],
   scrollBehavior (to, from, savedPosition) {

@@ -213,6 +213,18 @@ function roomLink(id) {
 
       </div>
     </div>
+    <div class="list">
+      <figure><img src="@/images/birthday_1.jpg" alt=""></figure>
+      <div>
+        <h4>サプライズ</h4>
+        <p>
+          大切な記念日やイベントにご予算に合わせてサプライズサービスをご提供します。</p>
+        <v-row justify="end" style="max-width: 700px">
+          <v-btn @click="router.push('surprise')" density="compact" variant="text">詳細→</v-btn>
+        </v-row>
+
+      </div>
+    </div>
 
 
   </section>
