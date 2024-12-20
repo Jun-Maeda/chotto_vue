@@ -100,7 +100,7 @@ function event_urls(images) {
           <template v-for="(item,key) in home_infos" :key="key">
             <dt @click="clickInfo(item)" class="cursor-pointer">{{ dayjs(item.update_date).format('YYYY年M月DD日') }}
             </dt>
-            <dd @click="clickInfo(item)" class="pl-5 cursor-pointer">{{ item.title }}。</dd>
+            <dd @click="clickInfo(item)" class="pl-5 cursor-pointer">{{ item.title }}</dd>
           </template>
         </dl>
 
