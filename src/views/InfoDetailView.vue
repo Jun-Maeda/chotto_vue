@@ -65,7 +65,7 @@ onMounted(async () => {
             :src="url+item.img"
           ></v-carousel-item>
         </v-carousel>
-        <div class="mt-5 mx-3" style="white-space: pre">{{ info_detail.detail }}</div>
+        <div class="mt-5 mx-3" style="white-space: pre-wrap; word-wrap: break-word;">{{ info_detail.detail }}</div>
 
       </v-col>
     </v-row>
